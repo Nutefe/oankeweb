@@ -71,8 +71,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-400 text-center py-6 text-sm" suppressHydrationWarning>
-        &copy; {new Date().getFullYear()} Oanke. {l.footer}
+      <footer className="bg-gray-900 text-gray-400 text-center py-6 text-sm">
+        &copy; <span suppressHydrationWarning>{new Date().getFullYear()}</span> Oanke. {l.footer}
       </footer>
     </div>
   );

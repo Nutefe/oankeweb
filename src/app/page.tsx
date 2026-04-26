@@ -64,6 +64,7 @@ export default function Home() {
               features={plan.features}
               highlighted={plan.highlighted}
               ctaLabel={l.choose_plan}
+              recommendedLabel={l.recommended}
             />
           ))}
         </div>
@@ -71,7 +72,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-gray-900 text-gray-400 text-center py-6 text-sm">
-        &copy; {new Date().getFullYear()} Oanke. Tous droits réservés.
+        &copy; {new Date().getFullYear()} Oanke. {l.footer}.
       </footer>
     </div>
   );

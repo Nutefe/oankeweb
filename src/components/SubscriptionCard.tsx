@@ -7,6 +7,7 @@ interface SubscriptionCardProps {
   features: string[];
   highlighted?: boolean;
   ctaLabel: string;
+  recommendedLabel?: string;
 }
 
 export default function SubscriptionCard({
@@ -16,6 +17,7 @@ export default function SubscriptionCard({
   features,
   highlighted = false,
   ctaLabel,
+  recommendedLabel = "Recommandé",
 }: SubscriptionCardProps) {
   return (
     <div
@@ -26,8 +28,8 @@ export default function SubscriptionCard({
     >
       {highlighted && (
         <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
-          Recommandé
-        </span>
+            {recommendedLabel}
+          </span>
       )}
       <h3 className={cn("text-xl font-bold mb-2", highlighted ? "text-blue-700" : "text-gray-800")}>
         {name}

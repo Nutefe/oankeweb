@@ -5,7 +5,8 @@ const USER_KEY = "oanke_user";
 export function saveUser(user: StoredUser): void {
   if (typeof window === "undefined") return;
   localStorage.setItem(USER_KEY, JSON.stringify(user));
-  document.cookie = `auth-token=${user.token}; path=/; SameSite=Lax`;
+  const secure = location.protocol === "https:" ? "; Secure" : "";
+  document.cookie = `auth-token=${user.token}; path=/; SameSite=Lax${secure}`;
 }
 
 export function getUser(): StoredUser | null {

@@ -34,6 +34,8 @@ export const translations = {
         "SLA garanti",
       ],
       choose_plan: "Choisir ce plan",
+      recommended: "Recommandé",
+      footer: "Tous droits réservés",
     },
     services: {
       title: "Nos Services",
@@ -141,6 +143,8 @@ export const translations = {
         "Guaranteed SLA",
       ],
       choose_plan: "Choose this plan",
+      recommended: "Recommended",
+      footer: "All rights reserved",
     },
     services: {
       title: "Our Services",
@@ -236,8 +240,19 @@ const LangContext = createContext<LangContextValue>({
 export function LangProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<Lang>("fr");
 
+  useEffect(() => {
+    const stored = localStorage.getItem("oanke_lang") as Lang | null;
+    if (stored === "fr" || stored === "en") {
+      setLang(stored);
+    }
+  }, []);
+
   const toggleLang = useCallback(() => {
-    setLang((prev) => (prev === "fr" ? "en" : "fr"));
+    setLang((prev) => {
+      const next = prev === "fr" ? "en" : "fr";
+      localStorage.setItem("oanke_lang", next);
+      return next;
+    });
   }, []);
 
   return (

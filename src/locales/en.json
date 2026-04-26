@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "services": "Services",
+    "support": "Support",
+    "aide": "Help",
+    "login": "Login"
+  },
+  "landing": {
+    "hero_title": "Manage your business with Oanke",
+    "hero_sub": "The all-in-one platform for retail, restaurant and service.",
+    "cta": "Get started",
+    "plans_title": "Our subscription plans",
+    "plan_basic": "Basic",
+    "plan_pro": "Professional",
+    "plan_enterprise": "Enterprise",
+    "plan_basic_price": "Free",
+    "plan_pro_price": "9,900 FCFA / month",
+    "plan_enterprise_price": "On request",
+    "plan_basic_desc": "Perfect to get started",
+    "plan_pro_desc": "For growing businesses",
+    "plan_enterprise_desc": "For large organisations",
+    "features_basic": ["1 user", "Basic dashboard", "Email support"],
+    "features_pro": ["5 users", "Advanced reports", "Priority support", "Multi-commerce"],
+    "features_enterprise": [
+      "Unlimited users",
+      "Custom API",
+      "Dedicated manager",
+      "Guaranteed SLA"
+    ],
+    "choose_plan": "Choose this plan",
+    "recommended": "Recommended",
+    "footer": "All rights reserved"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Everything you need to manage your business",
+    "s1_title": "Sales management",
+    "s1_desc": "Track your sales, stock and customers in real time.",
+    "s2_title": "Restaurant management",
+    "s2_desc": "Orders, tables, kitchen: all in one place.",
+    "s3_title": "Service management",
+    "s3_desc": "Schedule and track your service deliveries with ease."
+  },
+  "support": {
+    "title": "Support",
+    "subtitle": "We are here to help you",
+    "contact_title": "Contact us",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "hours_label": "Hours",
+    "hours_value": "Mon - Fri, 8am - 6pm",
+    "email_value": "support@oanke.com",
+    "phone_value": "+225 07 00 00 00",
+    "faq_title": "Frequently asked questions",
+    "faq_q1": "How do I reset my password?",
+    "faq_a1": "Contact your administrator or email support@oanke.com.",
+    "faq_q2": "Can I manage multiple businesses?",
+    "faq_a2": "Yes, with our Professional or Enterprise plan."
+  },
+  "aide": {
+    "title": "Help",
+    "subtitle": "Documentation and usage guides",
+    "start_title": "Quick start",
+    "start_desc": "Create your account, set up your business and invite your team in minutes.",
+    "guide_title": "Module guides",
+    "guide_vente": "Sales Guide",
+    "guide_restaurant": "Restaurant Guide",
+    "guide_service": "Service Guide",
+    "video_title": "Video tutorials",
+    "video_desc": "Explore our training videos to master all features."
+  },
+  "login": {
+    "title": "Login",
+    "subtitle": "Access your Oanke workspace",
+    "username_label": "Username",
+    "username_placeholder": "Enter your username",
+    "password_label": "Password",
+    "password_placeholder": "Enter your password",
+    "submit": "Sign in",
+    "loading": "Signing in...",
+    "error_generic": "Invalid credentials. Please try again."
+  },
+  "choose": {
+    "title": "Choose your business",
+    "subtitle": "You have access to several business types. Select the one you want to manage.",
+    "vente": "Sales",
+    "restaurant": "Restaurant",
+    "service": "Service",
+    "vente_desc": "Sales and inventory management",
+    "restaurant_desc": "Restaurant management",
+    "service_desc": "Service delivery management"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "logout": "Logout",
+    "vente_title": "Dashboard — Sales",
+    "restaurant_title": "Dashboard — Restaurant",
+    "service_title": "Dashboard — Service",
+    "admin_menu": ["Overview", "Users", "Reports", "Settings"],
+    "magasinier_menu": ["Stock", "Incoming", "Outgoing", "Inventory"],
+    "secretaire_menu": ["Clients", "Orders", "Invoices", "Schedule"],
+    "role_admin": "Administrator",
+    "role_magasinier": "Warehouse",
+    "role_secretaire": "Secretary"
+  }
+}

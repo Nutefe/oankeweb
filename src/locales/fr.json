@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "services": "Services",
+    "support": "Support",
+    "aide": "Aide",
+    "login": "Connexion"
+  },
+  "landing": {
+    "hero_title": "Gérez votre commerce avec Oanke",
+    "hero_sub": "La plateforme tout-en-un pour vente, restaurant et service.",
+    "cta": "Commencer maintenant",
+    "plans_title": "Nos offres d'abonnement",
+    "plan_basic": "Basique",
+    "plan_pro": "Professionnel",
+    "plan_enterprise": "Entreprise",
+    "plan_basic_price": "Gratuit",
+    "plan_pro_price": "9 900 FCFA / mois",
+    "plan_enterprise_price": "Sur devis",
+    "plan_basic_desc": "Idéal pour démarrer",
+    "plan_pro_desc": "Pour les commerces en croissance",
+    "plan_enterprise_desc": "Pour les grandes structures",
+    "features_basic": ["1 utilisateur", "Tableau de bord basique", "Support email"],
+    "features_pro": ["5 utilisateurs", "Rapports avancés", "Support prioritaire", "Multi-commerce"],
+    "features_enterprise": [
+      "Utilisateurs illimités",
+      "API personnalisée",
+      "Manager dédié",
+      "SLA garanti"
+    ],
+    "choose_plan": "Choisir ce plan",
+    "recommended": "Recommandé",
+    "footer": "Tous droits réservés"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Tout ce dont vous avez besoin pour gérer votre commerce",
+    "s1_title": "Gestion des ventes",
+    "s1_desc": "Suivez vos ventes, stocks et clients en temps réel.",
+    "s2_title": "Gestion restaurant",
+    "s2_desc": "Commandes, tables, cuisine : tout en un seul endroit.",
+    "s3_title": "Gestion de service",
+    "s3_desc": "Planifiez et suivez vos prestations de service facilement."
+  },
+  "support": {
+    "title": "Support",
+    "subtitle": "Nous sommes là pour vous aider",
+    "contact_title": "Contactez-nous",
+    "email_label": "Email",
+    "phone_label": "Téléphone",
+    "hours_label": "Horaires",
+    "hours_value": "Lun - Ven, 8h - 18h",
+    "email_value": "support@oanke.com",
+    "phone_value": "+225 07 00 00 00",
+    "faq_title": "Questions fréquentes",
+    "faq_q1": "Comment réinitialiser mon mot de passe ?",
+    "faq_a1": "Contactez votre administrateur ou envoyez un email à support@oanke.com.",
+    "faq_q2": "Puis-je gérer plusieurs commerces ?",
+    "faq_a2": "Oui, avec notre offre Professionnel ou Entreprise."
+  },
+  "aide": {
+    "title": "Aide",
+    "subtitle": "Documentation et guides d'utilisation",
+    "start_title": "Démarrage rapide",
+    "start_desc": "Créez votre compte, configurez votre commerce et invitez votre équipe en quelques minutes.",
+    "guide_title": "Guides par module",
+    "guide_vente": "Guide Vente",
+    "guide_restaurant": "Guide Restaurant",
+    "guide_service": "Guide Service",
+    "video_title": "Tutoriels vidéo",
+    "video_desc": "Découvrez nos vidéos de formation pour maîtriser toutes les fonctionnalités."
+  },
+  "login": {
+    "title": "Connexion",
+    "subtitle": "Accédez à votre espace Oanke",
+    "username_label": "Nom d'utilisateur",
+    "username_placeholder": "Entrez votre identifiant",
+    "password_label": "Mot de passe",
+    "password_placeholder": "Entrez votre mot de passe",
+    "submit": "Se connecter",
+    "loading": "Connexion...",
+    "error_generic": "Identifiants invalides. Veuillez réessayer."
+  },
+  "choose": {
+    "title": "Choisir votre commerce",
+    "subtitle": "Vous avez accès à plusieurs types de commerce. Sélectionnez celui que vous souhaitez gérer.",
+    "vente": "Vente",
+    "restaurant": "Restaurant",
+    "service": "Service",
+    "vente_desc": "Gestion des ventes et du stock",
+    "restaurant_desc": "Gestion du restaurant",
+    "service_desc": "Gestion des prestations"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "logout": "Déconnexion",
+    "vente_title": "Tableau de bord — Vente",
+    "restaurant_title": "Tableau de bord — Restaurant",
+    "service_title": "Tableau de bord — Service",
+    "admin_menu": ["Vue d'ensemble", "Utilisateurs", "Rapports", "Paramètres"],
+    "magasinier_menu": ["Stock", "Entrées", "Sorties", "Inventaire"],
+    "secretaire_menu": ["Clients", "Commandes", "Factures", "Agenda"],
+    "role_admin": "Administrateur",
+    "role_magasinier": "Magasinier",
+    "role_secretaire": "Secrétaire"
+  }
+}

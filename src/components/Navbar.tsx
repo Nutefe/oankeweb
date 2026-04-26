@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLang } from "@/lib/LangContext";
 import LangToggle from "@/components/LangToggle";
 import { ROUTES } from "@/constants/routes";
@@ -9,7 +9,14 @@ import { ROUTES } from "@/constants/routes";
 export default function Navbar() {
   const { t } = useLang();
   const pathname = usePathname();
+  // Defer active-link state to client mount to avoid hydration mismatches when
+  // a Proxy file is present (see Next.js docs: usePathname + Proxy / rewrites).
+  const [activePath, setActivePath] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setActivePath(pathname);
+  }, [pathname]);
 
   const links = [
     { href: ROUTES.SERVICES, label: t.nav.services },
@@ -34,7 +41,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
-                  pathname === link.href
+                  activePath === link.href
                     ? "text-blue-700 border-b-2 border-blue-700"
                     : "text-gray-600 hover:text-blue-700"
                 }`}
@@ -74,7 +81,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={`text-sm font-medium py-2 transition-colors ${
-                pathname === link.href ? "text-blue-700 font-bold" : "text-gray-600 hover:text-blue-700"
+                activePath === link.href ? "text-blue-700 font-bold" : "text-gray-600 hover:text-blue-700"
               }`}
             >
               {link.label}

@@ -89,17 +89,17 @@ export default function HomeContent() {
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200 gap-0">
-            {services.map((svc) => (
-              <div key={svc.title} className="px-0 md:px-8 py-6 md:py-0 first:pl-0 last:pr-0">
+            {services.map((service) => (
+              <div key={service.title} className="px-0 md:px-8 py-6 md:py-0 first:pl-0 last:pr-0">
                 <h3
                   className={`text-sm font-bold uppercase tracking-wider mb-4 ${
-                    svc.highlight ? "text-teal-500" : "text-gray-800"
+                    service.highlight ? "text-teal-500" : "text-gray-800"
                   }`}
                 >
-                  {svc.title}
+                  {service.title}
                 </h3>
                 <div className="w-full aspect-video bg-gray-200 rounded mb-4" />
-                <p className="text-sm text-gray-600 leading-relaxed">{svc.desc}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -116,16 +116,16 @@ export default function HomeContent() {
                 {l.advantages_title}
               </h2>
               <div className="grid grid-cols-2 gap-x-10 gap-y-7">
-                {advantages.map((adv, i) => (
-                  <div key={i}>
+                {advantages.map((advantage) => (
+                  <div key={advantage.title}>
                     <h4
                       className={`text-xs font-bold uppercase tracking-wide mb-1 ${
-                        i === 2 ? "text-teal-500" : "text-gray-800"
+                        advantage.title === l.adv3_title ? "text-teal-500" : "text-gray-800"
                       }`}
                     >
-                      {adv.title}
+                      {advantage.title}
                     </h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">{adv.desc}</p>
+                    <p className="text-xs text-gray-500 leading-relaxed">{advantage.desc}</p>
                   </div>
                 ))}
               </div>

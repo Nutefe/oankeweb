@@ -53,7 +53,7 @@ export default function HomeContent() {
             </p>
             <Link
               href={ROUTES.LOGIN}
-              className="inline-block bg-teal-500 hover:bg-teal-600 text-white text-xs font-bold uppercase tracking-wider px-6 py-3 transition-colors"
+              className="inline-block bg-[#E8231A] hover:bg-[#C41C14] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 transition-colors"
             >
               {l.cta}
             </Link>
@@ -84,7 +84,7 @@ export default function HomeContent() {
 
           {/* Service 2 – Billing (highlighted) */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-widest text-teal-500 mb-4">
+            <h3 className="text-xs font-bold uppercase tracking-widest text-[#E8231A] mb-4">
               {l.s2_title}
             </h3>
             <div className="bg-gray-200 h-36 mb-4 rounded-sm" />
@@ -129,7 +129,7 @@ export default function HomeContent() {
                   <div>
                     <h4
                       className={`text-xs font-bold uppercase tracking-wide mb-1 ${
-                        adv.highlight ? "text-teal-500" : "text-gray-800"
+                        adv.highlight ? "text-[#E8231A]" : "text-gray-800"
                       }`}
                     >
                       {adv.title}
@@ -141,7 +141,7 @@ export default function HomeContent() {
             </div>
 
             {/* Highlighted callout box */}
-            <div className="bg-gray-600 text-white flex flex-col justify-center items-center text-center p-8 rounded-sm">
+            <div className="bg-[#1E3080] text-white flex flex-col justify-center items-center text-center p-8 rounded-sm">
               <p className="text-sm font-semibold mb-2">{l.adv_highlight_1}</p>
               <p className="text-2xl font-extrabold mb-2">{l.adv_highlight_2}</p>
               <p className="text-sm font-semibold tracking-widest uppercase">{l.adv_highlight_3}</p>

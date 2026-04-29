@@ -7,7 +7,7 @@ type Check = "oui" | "non" | string;
 function Cell({ value }: { value: Check }) {
   if (value === "oui")
     return (
-      <span className="text-teal-600 font-semibold flex justify-center">
+      <span className="font-semibold flex justify-center" style={{ color: "#E8231A" }}>
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
@@ -60,7 +60,7 @@ export default function EntreprisePage() {
       <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-gray-900 to-blue-800 text-white py-20 px-4">
+      <section className="py-20 px-4" style={{ background: "linear-gradient(135deg, #111827 0%, #1E3080 100%)" }}>
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
             {se.hero_title}
@@ -82,24 +82,24 @@ export default function EntreprisePage() {
                 key={plan.name}
                 className={`rounded-xl border p-8 flex flex-col items-center text-center shadow-sm ${
                   plan.highlight
-                    ? "border-blue-600 bg-blue-50 ring-2 ring-blue-600"
+                    ? "border-[#1E3080] bg-[#E8ECFF] ring-2 ring-[#1E3080]"
                     : "border-gray-200 bg-white"
                 }`}
               >
                 {plan.highlight && (
-                  <span className="mb-3 text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
+                  <span className="mb-3 text-xs font-bold uppercase tracking-wider text-[#1E3080] bg-[#E8ECFF] px-3 py-1 rounded-full">
                     {se.recommended}
                   </span>
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
                 <p className="text-sm text-gray-500 mb-4 leading-relaxed">{plan.desc}</p>
-                <p className={`text-2xl font-extrabold mb-6 ${plan.highlight ? "text-blue-600" : "text-gray-900"}`}>
+                <p className={`text-2xl font-extrabold mb-6 ${plan.highlight ? "text-[#1E3080]" : "text-gray-900"}`}>
                   {plan.price}
                 </p>
                 <button
                   className={`w-full py-2 rounded-lg text-sm font-semibold transition-colors ${
                     plan.highlight
-                      ? "bg-blue-600 hover:bg-blue-700 text-white"
+                      ? "bg-[#E8231A] hover:bg-[#C41C14] text-white"
                       : "bg-gray-100 hover:bg-gray-200 text-gray-800"
                   }`}
                 >
@@ -135,8 +135,8 @@ export default function EntreprisePage() {
                 ))}
 
                 {/* Services sub-header */}
-                <tr className="bg-blue-50 border-t border-b border-blue-100">
-                  <td colSpan={4} className="px-6 py-3 font-semibold text-blue-700 text-sm uppercase tracking-wider">
+                <tr className="bg-[#E8ECFF] border-t border-b border-[#c5cdf7]">
+                  <td colSpan={4} className="px-6 py-3 font-semibold text-[#1E3080] text-sm uppercase tracking-wider">
                     {se.services_title}
                   </td>
                 </tr>

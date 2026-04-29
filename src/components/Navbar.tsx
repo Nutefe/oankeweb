@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { useLang } from "@/lib/LangContext";
@@ -9,8 +10,6 @@ import { ROUTES } from "@/constants/routes";
 export default function Navbar() {
   const { t } = useLang();
   const pathname = usePathname();
-  // Defer active-link state to client mount to avoid hydration mismatches when
-  // a Proxy file is present (see Next.js docs: usePathname + Proxy / rewrites).
   const [activePath, setActivePath] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -21,7 +20,6 @@ export default function Navbar() {
     setActivePath(pathname);
   }, [pathname]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -52,8 +50,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href={ROUTES.HOME} className="text-2xl font-bold text-blue-700">
-            Oanke
+          <Link href={ROUTES.HOME} className="flex items-center">
+            <Image
+              src="/logo.svg"
+              alt="Oanke"
+              width={110}
+              height={40}
+              priority
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -64,8 +69,8 @@ export default function Navbar() {
                 onClick={() => setSolutionsOpen((o) => !o)}
                 className={`flex items-center gap-1 text-sm font-medium transition-colors ${
                   isSolutionActive
-                    ? "text-blue-700 border-b-2 border-blue-700"
-                    : "text-gray-600 hover:text-blue-700"
+                    ? "border-b-2 border-[#E8231A] text-[#1E3080]"
+                    : "text-gray-600 hover:text-[#1E3080]"
                 }`}
               >
                 {t.nav.solutions}
@@ -88,8 +93,8 @@ export default function Navbar() {
                       onClick={() => setSolutionsOpen(false)}
                       className={`block px-4 py-2 text-sm transition-colors ${
                         activePath === sl.href
-                          ? "text-blue-700 bg-blue-50 font-semibold"
-                          : "text-gray-600 hover:text-blue-700 hover:bg-gray-50"
+                          ? "text-[#1E3080] bg-[#E8ECFF] font-semibold"
+                          : "text-gray-600 hover:text-[#1E3080] hover:bg-gray-50"
                       }`}
                     >
                       {sl.label}
@@ -105,8 +110,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-medium transition-colors ${
                   activePath === link.href
-                    ? "text-blue-700 border-b-2 border-blue-700"
-                    : "text-gray-600 hover:text-blue-700"
+                    ? "text-[#1E3080] border-b-2 border-[#E8231A]"
+                    : "text-gray-600 hover:text-[#1E3080]"
                 }`}
               >
                 {link.label}
@@ -143,7 +148,7 @@ export default function Navbar() {
             <button
               onClick={() => setMobileSolutionsOpen((o) => !o)}
               className={`flex items-center gap-1 w-full text-sm font-medium py-2 transition-colors ${
-                isSolutionActive ? "text-blue-700 font-bold" : "text-gray-600 hover:text-blue-700"
+                isSolutionActive ? "text-[#1E3080] font-bold" : "text-gray-600 hover:text-[#1E3080]"
               }`}
             >
               {t.nav.solutions}
@@ -164,7 +169,7 @@ export default function Navbar() {
                     href={sl.href}
                     onClick={() => { setMenuOpen(false); setMobileSolutionsOpen(false); }}
                     className={`text-sm font-medium py-1 transition-colors ${
-                      activePath === sl.href ? "text-blue-700 font-bold" : "text-gray-500 hover:text-blue-700"
+                      activePath === sl.href ? "text-[#1E3080] font-bold" : "text-gray-500 hover:text-[#1E3080]"
                     }`}
                   >
                     {sl.label}
@@ -180,7 +185,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className={`text-sm font-medium py-2 transition-colors ${
-                activePath === link.href ? "text-blue-700 font-bold" : "text-gray-600 hover:text-blue-700"
+                activePath === link.href ? "text-[#1E3080] font-bold" : "text-gray-600 hover:text-[#1E3080]"
               }`}
             >
               {link.label}

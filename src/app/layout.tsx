@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   // A dynamic href on the server-rendered <link> can differ from the value
   // React 19 expects during hydration, causing a "attributes didn't match" error.
   icons: {
-    icon: [{ url: "/favicon.ico", sizes: "256x256", type: "image/x-icon" }],
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+    ],
   },
 };
 

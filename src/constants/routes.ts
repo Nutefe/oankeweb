@@ -5,6 +5,10 @@ export const ROUTES = {
   AIDE: "/aide",
   LOGIN: "/login",
   CHOOSE_COMMERCE: "/choose-commerce",
+  SOLUTIONS: {
+    COMMERCE: "/solutions/commerce",
+    ENTREPRISE: "/solutions/entreprise",
+  },
   DASHBOARD: {
     VENTE: "/dashboard/vente",
     RESTAURANT: "/dashboard/restaurant",

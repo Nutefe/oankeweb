@@ -5,8 +5,8 @@
     "aide": "Aide",
     "login": "Connexion",
     "solutions": "Nos Solutions",
-    "solutions_commerce": "Boutique & Commerce",
-    "solutions_entreprise": "Services & Entreprise"
+    "solutions_commerce": "Commerce",
+    "solutions_entreprise": "Entreprise"
   },
   "landing": {
     "hero_title": "Gérez votre commerce avec Oanke",

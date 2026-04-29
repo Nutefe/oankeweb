@@ -7,7 +7,7 @@ type Check = "oui" | "non" | string;
 function Cell({ value }: { value: Check }) {
   if (value === "oui")
     return (
-      <span className="font-semibold flex justify-center" style={{ color: "#E8231A" }}>
+      <span className="font-semibold flex justify-center text-[var(--oanke-red)]">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
         </svg>
@@ -60,7 +60,7 @@ export default function CommercePage() {
       <Navbar />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
-      <section className="py-20 px-4" style={{ background: "linear-gradient(135deg, #1E3080 0%, #E8231A 100%)" }}>
+      <section className="py-20 px-4" style={{ background: "linear-gradient(135deg, var(--oanke-navy) 0%, var(--oanke-red) 100%)" }}>
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-6">
             {sc.hero_title}

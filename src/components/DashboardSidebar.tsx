@@ -46,7 +46,7 @@ export default function DashboardSidebar({ commerceType }: DashboardSidebarProps
     <aside className="flex flex-col w-64 min-h-screen bg-gray-900 text-white">
       {/* Header */}
       <div className="px-6 py-5 border-b border-gray-700">
-        <Image src="/logo.svg" alt="Oanke" width={100} height={36} className="h-9 w-auto brightness-0 invert" />
+        <Image src="/logo.png" alt="Oanke" width={100} height={36} className="h-9 w-auto brightness-0 invert" />
         <p className="text-xs text-[#E8231A] mt-2 uppercase tracking-wider">{commerceLabel}</p>
       </div>
 

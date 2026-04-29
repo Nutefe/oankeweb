@@ -63,7 +63,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <Image src="/logo.svg" alt="Oanke" width={140} height={50} className="h-12 w-auto mb-2" />
+          <Image src="/logo.png" alt="Oanke" width={140} height={50} className="h-12 w-auto mb-2" />
           <p className="text-gray-500 mt-2 text-sm">{l.subtitle}</p>
         </div>
 

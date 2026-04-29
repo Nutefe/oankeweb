@@ -35,8 +35,8 @@ export default function EntreprisePage() {
   ];
 
   const productRows: { label: string; values: Check[] }[] = [
-    { label: se.features.utilisateurs, values: ["10", "50", "Illimité"] },
-    { label: se.features.sites, values: ["1", "5", "Illimité"] },
+    { label: se.features.utilisateurs, values: ["10", "50", se.unlimited] },
+    { label: se.features.sites, values: ["1", "5", se.unlimited] },
     { label: se.features.gestion_rh, values: ["non", "oui", "oui"] },
     { label: se.features.comptabilite, values: ["non", "oui", "oui"] },
     { label: se.features.api, values: ["non", "non", "oui"] },
@@ -88,7 +88,7 @@ export default function EntreprisePage() {
               >
                 {plan.highlight && (
                   <span className="mb-3 text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
-                    Recommandé
+                    {se.recommended}
                   </span>
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>

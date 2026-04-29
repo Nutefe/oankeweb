@@ -41,7 +41,7 @@ export default function CommercePage() {
     { label: sc.features.inventaire, values: ["oui", "oui", "oui"] },
     { label: sc.features.vente_gros, values: ["oui", "oui", "oui"] },
     { label: sc.features.synchro, values: ["non", "oui", "oui"] },
-    { label: sc.features.marketplace, values: ["non", "oui 1 Go", "oui 5 Go"] },
+    { label: sc.features.marketplace, values: ["non", sc.marketplace_1go, sc.marketplace_5go] },
     { label: sc.features.fidelisation, values: ["non", "oui", "oui"] },
     { label: sc.features.rapport_stock, values: ["oui", "oui", "oui"] },
     { label: sc.features.rapport_avance, values: ["non", "oui", "oui"] },
@@ -88,7 +88,7 @@ export default function CommercePage() {
               >
                 {plan.highlight && (
                   <span className="mb-3 text-xs font-bold uppercase tracking-wider text-teal-600 bg-teal-100 px-3 py-1 rounded-full">
-                    Recommandé
+                    {sc.recommended}
                   </span>
                 )}
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>

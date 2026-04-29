@@ -3,7 +3,10 @@
     "services": "Services",
     "support": "Support",
     "aide": "Aide",
-    "login": "Connexion"
+    "login": "Connexion",
+    "solutions": "Nos Solutions",
+    "solutions_commerce": "Boutique & Commerce",
+    "solutions_entreprise": "Services & Entreprise"
   },
   "landing": {
     "hero_title": "Gérez votre commerce avec Oanke",
@@ -87,6 +90,82 @@
     "guide_service": "Guide Service",
     "video_title": "Tutoriels vidéo",
     "video_desc": "Découvrez nos vidéos de formation pour maîtriser toutes les fonctionnalités."
+  },
+  "solutions_commerce": {
+    "hero_title": "Gérer l'Avenir de Votre Commerce avec OANKE",
+    "hero_subtitle": "Une plateforme complète pour piloter votre boutique, suivre vos ventes, gérer vos stocks et fidéliser vos clients — depuis n'importe où.",
+    "country_label": "Pays",
+    "locations_label": "Nombre d'emplacements",
+    "plans_title": "Nos offres Commerce",
+    "plan_standard": "Standard",
+    "plan_essentiel": "Essentiel",
+    "plan_essentiel_plus": "Essentiel Plus",
+    "plan_standard_desc": "Conçu pour répondre aux besoins quotidiens des détaillants",
+    "plan_essentiel_desc": "Idéal pour développer votre activité et vos Partenariats",
+    "plan_essentiel_plus_desc": "Adapté pour une personnalisation avancée et un contrôle plus large des opérations",
+    "plan_standard_price": "9 900 FCFA/mois",
+    "plan_essentiel_price": "24 900 FCFA/mois",
+    "plan_essentiel_plus_price": "35 900 FCFA/mois",
+    "cta": "Choisir",
+    "products_title": "Produits",
+    "services_title": "Services",
+    "note": "Veuillez noter que les personnalisations supplémentaires par la suite en ligne, comme l'intégration de moyens de paiements personnels, s'appliquent en fonction de la nature de la demande.",
+    "features": {
+      "acces_web": "Accès Web",
+      "caisses": "Nombre de caisses",
+      "utilisateurs": "Nombre d'Utilisateurs",
+      "inventaire": "Gestion d'Inventaire",
+      "vente_gros": "Vente en gros",
+      "synchro": "Synchronisation de commande",
+      "marketplace": "Marketplace en ligne",
+      "fidelisation": "Fidélisation en magasin et en ligne",
+      "rapport_stock": "Rapport stock",
+      "rapport_avance": "Rapport Avancé (vente, personnel et client)"
+    },
+    "services_features": {
+      "mpi": "Fourniture de MPI pour Intégration",
+      "roles": "Personnalisation Rôle Utilisateur",
+      "formation": "Formation et Initiation",
+      "messagerie": "Assistance par messagerie",
+      "telephone": "Assistance par téléphone"
+    }
+  },
+  "solutions_entreprise": {
+    "hero_title": "Optimisez la Gestion de Votre Entreprise avec OANKE",
+    "hero_subtitle": "Une solution enterprise pour coordonner vos équipes, centraliser vos opérations et accélérer votre croissance — avec un accompagnement dédié.",
+    "plans_title": "Nos offres Entreprise",
+    "plan_starter": "Starter",
+    "plan_business": "Business",
+    "plan_corporate": "Corporate",
+    "plan_starter_desc": "Pour les petites structures et startups qui veulent se digitaliser rapidement",
+    "plan_business_desc": "Pour les entreprises en croissance cherchant une gestion centralisée",
+    "plan_corporate_desc": "Pour les grandes organisations nécessitant une personnalisation avancée",
+    "plan_starter_price": "29 900 FCFA/mois",
+    "plan_business_price": "59 900 FCFA/mois",
+    "plan_corporate_price": "Sur devis",
+    "cta": "Choisir",
+    "products_title": "Fonctionnalités",
+    "services_title": "Services",
+    "note": "Les personnalisations supplémentaires, comme l'intégration de systèmes tiers ou les développements spécifiques, s'appliquent en fonction de la nature de la demande.",
+    "features": {
+      "utilisateurs": "Nombre d'Utilisateurs",
+      "sites": "Nombre de sites / filiales",
+      "gestion_rh": "Gestion des Ressources Humaines",
+      "comptabilite": "Module Comptabilité",
+      "api": "Accès API",
+      "roles": "Gestion des rôles et permissions",
+      "rapports": "Rapports et tableaux de bord avancés",
+      "multi_devise": "Multi-devise",
+      "export": "Export de données (Excel, PDF)"
+    },
+    "services_features": {
+      "onboarding": "Onboarding dédié",
+      "formation": "Formation et Initiation",
+      "support_manager": "Manager de compte dédié",
+      "messagerie": "Assistance par messagerie",
+      "telephone": "Assistance par téléphone",
+      "sla": "SLA garanti"
+    }
   },
   "login": {
     "title": "Connexion",

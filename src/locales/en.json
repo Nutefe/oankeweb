@@ -3,7 +3,10 @@
     "services": "Services",
     "support": "Support",
     "aide": "Help",
-    "login": "Login"
+    "login": "Login",
+    "solutions": "Our Solutions",
+    "solutions_commerce": "Shop & Commerce",
+    "solutions_entreprise": "Services & Enterprise"
   },
   "landing": {
     "hero_title": "Manage your business with Oanke",
@@ -87,6 +90,82 @@
     "guide_service": "Service Guide",
     "video_title": "Video tutorials",
     "video_desc": "Explore our training videos to master all features."
+  },
+  "solutions_commerce": {
+    "hero_title": "Shape the Future of Your Business with OANKE",
+    "hero_subtitle": "A complete platform to manage your shop, track sales, handle inventory and retain customers — from anywhere.",
+    "country_label": "Country",
+    "locations_label": "Number of locations",
+    "plans_title": "Our Commerce Plans",
+    "plan_standard": "Standard",
+    "plan_essentiel": "Essential",
+    "plan_essentiel_plus": "Essential Plus",
+    "plan_standard_desc": "Designed to meet the daily needs of retailers",
+    "plan_essentiel_desc": "Ideal for growing your business and partnerships",
+    "plan_essentiel_plus_desc": "Tailored for advanced customisation and broader operational control",
+    "plan_standard_price": "9,900 FCFA/month",
+    "plan_essentiel_price": "24,900 FCFA/month",
+    "plan_essentiel_plus_price": "35,900 FCFA/month",
+    "cta": "Choose",
+    "products_title": "Products",
+    "services_title": "Services",
+    "note": "Please note that additional customisations such as the integration of personal payment methods apply depending on the nature of the request.",
+    "features": {
+      "acces_web": "Web Access",
+      "caisses": "Number of checkouts",
+      "utilisateurs": "Number of Users",
+      "inventaire": "Inventory Management",
+      "vente_gros": "Wholesale",
+      "synchro": "Order Synchronisation",
+      "marketplace": "Online Marketplace",
+      "fidelisation": "In-store & online loyalty",
+      "rapport_stock": "Stock Report",
+      "rapport_avance": "Advanced Report (sales, staff & customers)"
+    },
+    "services_features": {
+      "mpi": "MPI Supply for Integration",
+      "roles": "User Role Customisation",
+      "formation": "Training & Onboarding",
+      "messagerie": "Chat / Messaging support",
+      "telephone": "Phone support"
+    }
+  },
+  "solutions_entreprise": {
+    "hero_title": "Optimise Your Enterprise Management with OANKE",
+    "hero_subtitle": "An enterprise solution to coordinate your teams, centralise operations and accelerate growth — with dedicated support.",
+    "plans_title": "Our Enterprise Plans",
+    "plan_starter": "Starter",
+    "plan_business": "Business",
+    "plan_corporate": "Corporate",
+    "plan_starter_desc": "For small structures and startups looking to digitalise quickly",
+    "plan_business_desc": "For growing companies seeking centralised management",
+    "plan_corporate_desc": "For large organisations requiring advanced customisation",
+    "plan_starter_price": "29,900 FCFA/month",
+    "plan_business_price": "59,900 FCFA/month",
+    "plan_corporate_price": "On request",
+    "cta": "Choose",
+    "products_title": "Features",
+    "services_title": "Services",
+    "note": "Additional customisations such as third-party system integrations or specific developments apply depending on the nature of the request.",
+    "features": {
+      "utilisateurs": "Number of Users",
+      "sites": "Number of sites / branches",
+      "gestion_rh": "HR Management",
+      "comptabilite": "Accounting Module",
+      "api": "API Access",
+      "roles": "Role & Permission Management",
+      "rapports": "Advanced Reports & Dashboards",
+      "multi_devise": "Multi-currency",
+      "export": "Data export (Excel, PDF)"
+    },
+    "services_features": {
+      "onboarding": "Dedicated onboarding",
+      "formation": "Training & Onboarding",
+      "support_manager": "Dedicated account manager",
+      "messagerie": "Chat / Messaging support",
+      "telephone": "Phone support",
+      "sla": "Guaranteed SLA"
+    }
   },
   "login": {
     "title": "Login",

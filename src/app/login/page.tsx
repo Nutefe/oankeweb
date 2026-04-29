@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useLang } from "@/lib/LangContext";
 import { useUser } from "@/hooks/useUser";
@@ -57,11 +58,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-700 to-indigo-800 flex items-center justify-center px-4">
+    <div className="min-h-screen flex items-center justify-center px-4"
+      style={{ background: "linear-gradient(135deg, var(--oanke-navy) 0%, var(--oanke-red) 100%)" }}>
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
         {/* Logo */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-extrabold text-blue-700">Oanke</h1>
+        <div className="flex flex-col items-center mb-8">
+          <Image src="/logo.svg" alt="Oanke" width={140} height={50} className="h-12 w-auto mb-2" />
           <p className="text-gray-500 mt-2 text-sm">{l.subtitle}</p>
         </div>
 
@@ -83,7 +85,7 @@ export default function LoginPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder={l.username_placeholder}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="username"
             />
             {errors.username && (
@@ -100,7 +102,7 @@ export default function LoginPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder={l.password_placeholder}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-blue-700 focus:border-transparent transition"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="current-password"
             />
             {errors.password && (
@@ -111,7 +113,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-700 hover:bg-blue-800 disabled:bg-blue-400 text-white font-bold py-3 rounded-xl transition-colors text-sm mt-2"
+            className="w-full bg-[#E8231A] hover:bg-[#C41C14] disabled:bg-[#f47c77] text-white font-bold py-3 rounded-xl transition-colors text-sm mt-2"
           >
             {isLoading ? l.loading : l.submit}
           </button>

@@ -3,20 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+/* Oanke brand colors */
+  --oanke-red: #E8231A;
+  --oanke-red-dark: #C41C14;
+  --oanke-navy: #1E3080;
+  --oanke-navy-dark: #162260;
+  --oanke-navy-light: #E8ECFF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-oanke-red: var(--oanke-red);
+  --color-oanke-red-dark: var(--oanke-red-dark);
+  --color-oanke-navy: var(--oanke-navy);
+  --color-oanke-navy-dark: var(--oanke-navy-dark);
+  --color-oanke-navy-light: var(--oanke-navy-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {

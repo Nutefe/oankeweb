@@ -23,15 +23,15 @@ export default function SubscriptionCard({
     <div
       className={cn(
         "relative flex flex-col rounded-2xl p-8 bg-white shadow-md border-2 transition-transform hover:-translate-y-1",
-        highlighted ? "border-blue-700 scale-105" : "border-gray-200"
+        highlighted ? "border-[#1E3080] scale-105" : "border-gray-200"
       )}
     >
       {highlighted && (
-        <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
+        <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#E8231A] text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
             {recommendedLabel}
           </span>
       )}
-      <h3 className={cn("text-xl font-bold mb-2", highlighted ? "text-blue-700" : "text-gray-800")}>
+      <h3 className={cn("text-xl font-bold mb-2", highlighted ? "text-[#1E3080]" : "text-gray-800")}>
         {name}
       </h3>
       <p className="text-3xl font-extrabold text-gray-900 mb-1">{price}</p>
@@ -54,7 +54,7 @@ export default function SubscriptionCard({
         className={cn(
           "w-full py-3 rounded-xl font-semibold text-sm transition-colors",
           highlighted
-            ? "bg-blue-700 text-white hover:bg-blue-800"
+            ? "bg-[#1E3080] text-white hover:bg-[#162260]"
             : "bg-gray-100 text-gray-800 hover:bg-gray-200"
         )}
       >

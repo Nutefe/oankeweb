@@ -1,6 +1,9 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import { useLang } from "@/lib/LangContext";
+import { useSubscription } from "@/lib/SubscriptionContext";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "@/constants/routes";
 
 type Check = "oui" | "non" | string;
 
@@ -27,6 +30,15 @@ function Cell({ value }: { value: Check }) {
 export default function EntreprisePage() {
   const { t } = useLang();
   const se = t.solutions_entreprise;
+  const { setOffer } = useSubscription();
+  const router = useRouter();
+
+  function choosePlan(name: string, price: string, planKey: string) {
+    setOffer({ name, price, planKey });
+    router.push(
+      `${ROUTES.SUBSCRIBE}?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&planKey=${encodeURIComponent(planKey)}`
+    );
+  }
 
   const plans = [
     { name: se.plan_starter, price: se.plan_starter_price, desc: se.plan_starter_desc },
@@ -97,6 +109,7 @@ export default function EntreprisePage() {
                   {plan.price}
                 </p>
                 <button
+                  onClick={() => choosePlan(plan.name, plan.price, plan.name)}
                   className={`w-full py-2 rounded-lg text-sm font-semibold transition-colors ${
                     plan.highlight
                       ? "bg-[#E8231A] hover:bg-[#C41C14] text-white"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { LangProvider } from "@/lib/LangContext";
 import { AuthProvider } from "@/lib/AuthContext";
+import { SubscriptionProvider } from "@/lib/SubscriptionContext";
 
 export const metadata: Metadata = {
   title: "Oanke",
@@ -30,7 +31,9 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LangProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <SubscriptionProvider>{children}</SubscriptionProvider>
+          </AuthProvider>
         </LangProvider>
       </body>
     </html>

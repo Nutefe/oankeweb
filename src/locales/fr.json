@@ -227,6 +227,69 @@
     "restaurant_desc": "Gestion du restaurant",
     "service_desc": "Gestion des prestations"
   },
+  "subscribe": {
+    "title": "Finaliser votre abonnement",
+    "subtitle": "Choisissez votre moyen de paiement et validez votre abonnement.",
+    "offer_label": "Offre choisie",
+    "tab_card": "Carte bancaire",
+    "tab_mobile_money": "Mobile Money",
+    "tab_paypal": "PayPal",
+    "card": {
+      "holder_label": "Titulaire de la carte",
+      "holder_placeholder": "Nom complet",
+      "number_label": "Numéro de carte",
+      "number_placeholder": "1234 5678 9012 3456",
+      "expiry_label": "Date d'expiration",
+      "expiry_placeholder": "MM/AA",
+      "cvc_label": "CVC",
+      "cvc_placeholder": "123",
+      "save_card": "Enregistrer cette carte",
+      "validation": {
+        "holder_min": "Le nom doit comporter au moins 2 caractères",
+        "number_invalid": "Numéro de carte invalide (16 chiffres requis)",
+        "expiry_invalid": "Format invalide (MM/AA) et mois entre 01 et 12",
+        "cvc_invalid": "CVC invalide (3 ou 4 chiffres)"
+      }
+    },
+    "mobile_money": {
+      "provider_label": "Opérateur",
+      "phone_label": "Numéro de téléphone",
+      "phone_placeholder": "+22507000000",
+      "account_label": "Nom du compte",
+      "account_placeholder": "Nom complet",
+      "otp_label": "Code OTP",
+      "otp_placeholder": "Entrez le code reçu",
+      "send_otp": "Envoyer OTP",
+      "validation": {
+        "provider_invalid": "Choisissez un opérateur",
+        "phone_invalid": "Numéro invalide (8 à 15 chiffres)",
+        "account_min": "Le nom doit comporter au moins 2 caractères"
+      }
+    },
+    "paypal": {
+      "email_label": "Adresse PayPal",
+      "email_placeholder": "email@exemple.com",
+      "cta": "Continuer avec PayPal",
+      "validation": {
+        "email_invalid": "Adresse email invalide"
+      }
+    },
+    "submit": "Valider l'abonnement",
+    "submitting": "Validation en cours…",
+    "success_title": "Abonnement activé !",
+    "success_desc": "Votre abonnement a été souscrit avec succès.",
+    "go_dashboard": "Accéder à mon espace",
+    "auth_gate": {
+      "title": "Connectez-vous pour continuer",
+      "tab_login": "Se connecter",
+      "tab_register": "Créer un compte",
+      "login_submit": "Se connecter",
+      "login_loading": "Connexion…",
+      "register_submit": "Créer le compte",
+      "register_loading": "Création…",
+      "register_success": "Compte créé ! Connexion en cours…"
+    }
+  },
   "dashboard": {
     "welcome": "Bienvenue",
     "logout": "Déconnexion",

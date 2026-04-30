@@ -227,6 +227,69 @@
     "restaurant_desc": "Restaurant management",
     "service_desc": "Service delivery management"
   },
+  "subscribe": {
+    "title": "Finalise your subscription",
+    "subtitle": "Choose your payment method and confirm your subscription.",
+    "offer_label": "Selected plan",
+    "tab_card": "Credit / Debit card",
+    "tab_mobile_money": "Mobile Money",
+    "tab_paypal": "PayPal",
+    "card": {
+      "holder_label": "Cardholder name",
+      "holder_placeholder": "Full name",
+      "number_label": "Card number",
+      "number_placeholder": "1234 5678 9012 3456",
+      "expiry_label": "Expiry date",
+      "expiry_placeholder": "MM/YY",
+      "cvc_label": "CVC",
+      "cvc_placeholder": "123",
+      "save_card": "Save this card",
+      "validation": {
+        "holder_min": "Name must be at least 2 characters",
+        "number_invalid": "Invalid card number (16 digits required)",
+        "expiry_invalid": "Invalid format (MM/YY) and month between 01 and 12",
+        "cvc_invalid": "Invalid CVC (3 or 4 digits)"
+      }
+    },
+    "mobile_money": {
+      "provider_label": "Operator",
+      "phone_label": "Phone number",
+      "phone_placeholder": "+22507000000",
+      "account_label": "Account name",
+      "account_placeholder": "Full name",
+      "otp_label": "OTP code",
+      "otp_placeholder": "Enter the received code",
+      "send_otp": "Send OTP",
+      "validation": {
+        "provider_invalid": "Please choose an operator",
+        "phone_invalid": "Invalid number (8 to 15 digits)",
+        "account_min": "Name must be at least 2 characters"
+      }
+    },
+    "paypal": {
+      "email_label": "PayPal email",
+      "email_placeholder": "email@example.com",
+      "cta": "Continue with PayPal",
+      "validation": {
+        "email_invalid": "Invalid email address"
+      }
+    },
+    "submit": "Confirm subscription",
+    "submitting": "Processing…",
+    "success_title": "Subscription activated!",
+    "success_desc": "Your subscription has been successfully created.",
+    "go_dashboard": "Go to my workspace",
+    "auth_gate": {
+      "title": "Sign in to continue",
+      "tab_login": "Sign in",
+      "tab_register": "Create account",
+      "login_submit": "Sign in",
+      "login_loading": "Signing in…",
+      "register_submit": "Create account",
+      "register_loading": "Creating…",
+      "register_success": "Account created! Signing in…"
+    }
+  },
   "dashboard": {
     "welcome": "Welcome",
     "logout": "Logout",

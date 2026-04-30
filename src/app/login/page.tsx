@@ -7,7 +7,7 @@ import { useLang } from "@/lib/LangContext";
 import { useUser } from "@/hooks/useUser";
 import { login } from "@/services/authService";
 import { saveUser } from "@/auth/authUtils";
-import { loginSchema } from "@/schemas/loginSchema";
+import { createLoginSchema } from "@/schemas/loginSchema";
 import { ROUTES } from "@/constants/routes";
 
 export default function LoginPage() {
@@ -26,6 +26,10 @@ export default function LoginPage() {
     e.preventDefault();
     setServerError("");
 
+    const loginSchema = createLoginSchema({
+      username_required: l.validation.username_required,
+      password_required: l.validation.password_required,
+    });
     const result = loginSchema.safeParse({ username, password });
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;

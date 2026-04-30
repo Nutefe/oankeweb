@@ -1,9 +1,21 @@
 import { z } from "zod";
 
-export const registerSchema = z.object({
-  username: z.string().min(3, "Le nom d'utilisateur doit comporter au moins 3 caractères"),
-  email: z.string().email("L'adresse email est invalide"),
-  password: z.string().min(6, "Le mot de passe doit comporter au moins 6 caractères"),
-});
+export interface RegisterSchemaMessages {
+  username_min: string;
+  email_invalid: string;
+  password_min: string;
+}
 
-export type RegisterFormValues = z.infer<typeof registerSchema>;
+export function createRegisterSchema(messages: RegisterSchemaMessages) {
+  return z.object({
+    username: z.string().min(3, messages.username_min),
+    email: z.string().email(messages.email_invalid),
+    password: z.string().min(6, messages.password_min),
+  });
+}
+
+export type RegisterFormValues = {
+  username: string;
+  email: string;
+  password: string;
+};

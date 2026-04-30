@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useLang } from "@/lib/LangContext";
 import { register } from "@/services/authService";
-import { registerSchema } from "@/schemas/registerSchema";
+import { createRegisterSchema } from "@/schemas/registerSchema";
 import { ROUTES } from "@/constants/routes";
 
 export default function RegisterPage() {
@@ -26,6 +26,11 @@ export default function RegisterPage() {
     setServerError("");
     setSuccessMessage("");
 
+    const registerSchema = createRegisterSchema({
+      username_min: r.validation.username_min,
+      email_invalid: r.validation.email_invalid,
+      password_min: r.validation.password_min,
+    });
     const result = registerSchema.safeParse({ username, email, password });
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
@@ -44,7 +49,7 @@ export default function RegisterPage() {
       setSuccessMessage(r.success);
       setTimeout(() => router.push(ROUTES.LOGIN), 2000);
     } catch (err: unknown) {
-      setServerError(err instanceof Error ? err.message : r.error_generic);
+      setServerError(err instanceof Error && err.message ? err.message : r.error_generic);
     } finally {
       setIsLoading(false);
     }

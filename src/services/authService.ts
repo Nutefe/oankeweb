@@ -22,6 +22,6 @@ export async function register(username: string, email: string, password: string
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    throw new Error((err as { message?: string })?.message || "Erreur lors de la création du compte");
+    throw new Error((err as { message?: string })?.message ?? "");
   }
 }

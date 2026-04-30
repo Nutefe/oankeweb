@@ -1,8 +1,18 @@
 import { z } from "zod";
 
-export const loginSchema = z.object({
-  username: z.string().min(1, "Le nom d'utilisateur est requis"),
-  password: z.string().min(1, "Le mot de passe est requis"),
-});
+export interface LoginSchemaMessages {
+  username_required: string;
+  password_required: string;
+}
 
-export type LoginFormValues = z.infer<typeof loginSchema>;
+export function createLoginSchema(messages: LoginSchemaMessages) {
+  return z.object({
+    username: z.string().min(1, messages.username_required),
+    password: z.string().min(1, messages.password_required),
+  });
+}
+
+export type LoginFormValues = {
+  username: string;
+  password: string;
+};

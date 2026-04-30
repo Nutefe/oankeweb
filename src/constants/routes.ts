@@ -4,6 +4,7 @@ export const ROUTES = {
   SUPPORT: "/support",
   AIDE: "/aide",
   LOGIN: "/login",
+  REGISTER: "/register",
   CHOOSE_COMMERCE: "/choose-commerce",
   SOLUTIONS: {
     COMMERCE: "/solutions/commerce",

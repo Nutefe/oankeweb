@@ -181,7 +181,25 @@
     "password_placeholder": "Entrez votre mot de passe",
     "submit": "Se connecter",
     "loading": "Connexion...",
-    "error_generic": "Identifiants invalides. Veuillez réessayer."
+    "error_generic": "Identifiants invalides. Veuillez réessayer.",
+    "no_account": "Pas encore de compte ?",
+    "register_link": "Créer un compte"
+  },
+  "register": {
+    "title": "Créer un compte",
+    "subtitle": "Rejoignez la plateforme Oanke",
+    "username_label": "Nom d'utilisateur",
+    "username_placeholder": "Choisissez un identifiant",
+    "email_label": "Adresse email",
+    "email_placeholder": "Entrez votre email",
+    "password_label": "Mot de passe",
+    "password_placeholder": "Choisissez un mot de passe",
+    "submit": "Créer le compte",
+    "loading": "Création en cours...",
+    "error_generic": "Erreur lors de la création du compte. Veuillez réessayer.",
+    "success": "Compte créé avec succès ! Vous pouvez maintenant vous connecter.",
+    "already_account": "Déjà un compte ?",
+    "login_link": "Se connecter"
   },
   "choose": {
     "title": "Choisir votre commerce",

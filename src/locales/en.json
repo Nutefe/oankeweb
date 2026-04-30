@@ -181,7 +181,25 @@
     "password_placeholder": "Enter your password",
     "submit": "Sign in",
     "loading": "Signing in...",
-    "error_generic": "Invalid credentials. Please try again."
+    "error_generic": "Invalid credentials. Please try again.",
+    "no_account": "Don't have an account?",
+    "register_link": "Create an account"
+  },
+  "register": {
+    "title": "Create an account",
+    "subtitle": "Join the Oanke platform",
+    "username_label": "Username",
+    "username_placeholder": "Choose a username",
+    "email_label": "Email address",
+    "email_placeholder": "Enter your email",
+    "password_label": "Password",
+    "password_placeholder": "Choose a password",
+    "submit": "Create account",
+    "loading": "Creating account...",
+    "error_generic": "Error creating account. Please try again.",
+    "success": "Account created successfully! You can now sign in.",
+    "already_account": "Already have an account?",
+    "login_link": "Sign in"
   },
   "choose": {
     "title": "Choose your business",

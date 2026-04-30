@@ -63,7 +63,7 @@ export default function CardForm({ onSubmit, isSubmitting }: CardFormProps) {
     else if (field === "cardNumber") setNumber(value);
     else if (field === "expiry") setExpiry(value);
     else if (field === "cvc") setCvc(value);
-    setCardData({ ...getValues(), [field]: value });
+    setCardData({ [field]: value } as Partial<CardFormValues>);
     if (touched[field]) validateField(field, { [field]: value });
   }
 

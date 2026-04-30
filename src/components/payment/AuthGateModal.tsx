@@ -141,7 +141,6 @@ export default function AuthGateModal({ onSuccess, onClose }: AuthGateModalProps
     setRegLoading(true);
     try {
       const { confirmPassword: _cp, ...registerData } = result.data;
-      void _cp;
       await register(registerData);
       setRegSuccess(s.register_success);
       // Auto-login after registration

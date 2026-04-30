@@ -1,5 +1,5 @@
 "use client";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import PaymentTabs from "@/components/payment/PaymentTabs";
@@ -15,16 +15,18 @@ function SubscribeContent() {
   const { draft, setOffer, resetDraft } = useSubscription();
   const [success, setSuccess] = useState(false);
 
-  // Hydrate offer from URL query params on first render
+  // Hydrate offer from URL query params once on first render
+  const hydratedRef = useRef(false);
   useEffect(() => {
+    if (hydratedRef.current) return;
+    hydratedRef.current = true;
     const name = searchParams.get("name");
     const price = searchParams.get("price");
     const planKey = searchParams.get("planKey");
     if (name && price && planKey && !draft.offer) {
       setOffer({ name, price, planKey });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [searchParams, draft.offer, setOffer]);
 
   function handleSuccess() {
     setSuccess(true);

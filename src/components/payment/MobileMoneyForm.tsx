@@ -74,7 +74,7 @@ export default function MobileMoneyForm({ onSubmit, isSubmitting }: MobileMoneyF
     if (field === "provider") setProvider(value);
     else if (field === "phoneNumber") setPhone(value);
     else if (field === "accountName") setAccountName(value);
-    setMobileMoneyData({ ...getValues() });
+    setMobileMoneyData({ [field]: value } as Partial<MobileMoneyFormValues>);
     if (touched[field]) validateField(field, { [field]: value });
   }
 

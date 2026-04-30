@@ -186,7 +186,8 @@
     "register_link": "Create an account",
     "validation": {
       "username_required": "Username is required",
-      "password_required": "Password is required"
+      "password_required": "Password is required",
+      "password_min": "Password must be at least 6 characters"
     }
   },
   "register": {
@@ -198,6 +199,8 @@
     "email_placeholder": "Enter your email",
     "password_label": "Password",
     "password_placeholder": "Choose a password",
+    "confirmPassword_label": "Confirm password",
+    "confirmPassword_placeholder": "Repeat your password",
     "submit": "Create account",
     "loading": "Creating account...",
     "error_generic": "Error creating account. Please try again.",
@@ -205,9 +208,13 @@
     "already_account": "Already have an account?",
     "login_link": "Sign in",
     "validation": {
+      "username_required": "Username is required",
       "username_min": "Username must be at least 3 characters",
+      "email_required": "Email address is required",
       "email_invalid": "Invalid email address",
-      "password_min": "Password must be at least 6 characters"
+      "password_min": "Password must be at least 6 characters",
+      "confirmPassword_required": "Please confirm your password",
+      "confirmPassword_mismatch": "Passwords do not match"
     }
   },
   "choose": {

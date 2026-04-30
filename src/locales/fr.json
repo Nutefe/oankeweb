@@ -186,7 +186,8 @@
     "register_link": "Créer un compte",
     "validation": {
       "username_required": "Le nom d'utilisateur est requis",
-      "password_required": "Le mot de passe est requis"
+      "password_required": "Le mot de passe est requis",
+      "password_min": "Le mot de passe doit comporter au moins 6 caractères"
     }
   },
   "register": {
@@ -198,6 +199,8 @@
     "email_placeholder": "Entrez votre email",
     "password_label": "Mot de passe",
     "password_placeholder": "Choisissez un mot de passe",
+    "confirmPassword_label": "Confirmer le mot de passe",
+    "confirmPassword_placeholder": "Répétez votre mot de passe",
     "submit": "Créer le compte",
     "loading": "Création en cours...",
     "error_generic": "Erreur lors de la création du compte. Veuillez réessayer.",
@@ -205,9 +208,13 @@
     "already_account": "Déjà un compte ?",
     "login_link": "Se connecter",
     "validation": {
+      "username_required": "Le nom d'utilisateur est requis",
       "username_min": "Le nom d'utilisateur doit comporter au moins 3 caractères",
+      "email_required": "L'adresse email est requise",
       "email_invalid": "L'adresse email est invalide",
-      "password_min": "Le mot de passe doit comporter au moins 6 caractères"
+      "password_min": "Le mot de passe doit comporter au moins 6 caractères",
+      "confirmPassword_required": "Veuillez confirmer votre mot de passe",
+      "confirmPassword_mismatch": "Les mots de passe ne correspondent pas"
     }
   },
   "choose": {

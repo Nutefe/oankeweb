@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,28 +16,44 @@ export default function RegisterPage() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{ username?: string; email?: string; password?: string }>({});
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState<{
+    username?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
+  }>({});
   const [serverError, setServerError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const registerSchema = useMemo(
+    () =>
+      createRegisterSchema({
+        username_required: r.validation.username_required,
+        username_min: r.validation.username_min,
+        email_required: r.validation.email_required,
+        email_invalid: r.validation.email_invalid,
+        password_min: r.validation.password_min,
+        confirmPassword_required: r.validation.confirmPassword_required,
+        confirmPassword_mismatch: r.validation.confirmPassword_mismatch,
+      }),
+    [r]
+  );
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setServerError("");
     setSuccessMessage("");
 
-    const registerSchema = createRegisterSchema({
-      username_min: r.validation.username_min,
-      email_invalid: r.validation.email_invalid,
-      password_min: r.validation.password_min,
-    });
-    const result = registerSchema.safeParse({ username, email, password });
+    const result = registerSchema.safeParse({ username, email, password, confirmPassword });
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
       setErrors({
         username: fieldErrors.username?.[0],
         email: fieldErrors.email?.[0],
         password: fieldErrors.password?.[0],
+        confirmPassword: fieldErrors.confirmPassword?.[0],
       });
       return;
     }
@@ -45,7 +61,8 @@ export default function RegisterPage() {
     setIsLoading(true);
 
     try {
-      await register(username, email, password);
+      const { confirmPassword: _cp, ...registerData } = result.data;
+      await register(registerData);
       setSuccessMessage(r.success);
       setTimeout(() => router.push(ROUTES.LOGIN), 2000);
     } catch (err: unknown) {
@@ -130,6 +147,23 @@ export default function RegisterPage() {
             />
             {errors.password && (
               <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+            )}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              {r.confirmPassword_label}
+            </label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder={r.confirmPassword_placeholder}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
+              autoComplete="new-password"
+            />
+            {errors.confirmPassword && (
+              <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>
             )}
           </div>
 

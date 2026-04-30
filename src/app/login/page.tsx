@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -22,14 +22,20 @@ export default function LoginPage() {
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const loginSchema = useMemo(
+    () =>
+      createLoginSchema({
+        username_required: l.validation.username_required,
+        password_required: l.validation.password_required,
+        password_min: l.validation.password_min,
+      }),
+    [l]
+  );
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setServerError("");
 
-    const loginSchema = createLoginSchema({
-      username_required: l.validation.username_required,
-      password_required: l.validation.password_required,
-    });
     const result = loginSchema.safeParse({ username, password });
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
@@ -43,7 +49,7 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const response = await login(username, password);
+      const response = await login(result.data);
       const storedUser = {
         token: response.token,
         username: response.username,

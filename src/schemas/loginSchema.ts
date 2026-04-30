@@ -1,13 +1,18 @@
-export interface LoginFormValues {
-  username: string;
-  password: string;
+import { z } from "zod";
+
+export interface LoginSchemaMessages {
+  username_required: string;
+  password_required: string;
 }
 
-export function validateLoginForm(
-  values: LoginFormValues
-): Partial<Record<keyof LoginFormValues, string>> {
-  const errors: Partial<Record<keyof LoginFormValues, string>> = {};
-  if (!values.username.trim()) errors.username = "Le nom d'utilisateur est requis";
-  if (!values.password) errors.password = "Le mot de passe est requis";
-  return errors;
+export function createLoginSchema(messages: LoginSchemaMessages) {
+  return z.object({
+    username: z.string().min(1, messages.username_required),
+    password: z.string().min(1, messages.password_required),
+  });
 }
+
+export type LoginFormValues = {
+  username: string;
+  password: string;
+};

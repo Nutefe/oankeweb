@@ -23,6 +23,12 @@ export default function RegisterPage() {
     password?: string;
     confirmPassword?: string;
   }>({});
+  const [touched, setTouched] = useState<{
+    username?: boolean;
+    email?: boolean;
+    password?: boolean;
+    confirmPassword?: boolean;
+  }>({});
   const [serverError, setServerError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +47,34 @@ export default function RegisterPage() {
     [r]
   );
 
+  type RegisterField = "username" | "email" | "password" | "confirmPassword";
+  type RegisterErrors = { username?: string; email?: string; password?: string; confirmPassword?: string };
+  type RegisterTouched = { username?: boolean; email?: boolean; password?: boolean; confirmPassword?: boolean };
+
+  function validateField(field: RegisterField, value: string) {
+    const values = { username, email, password, confirmPassword, [field]: value };
+    const result = registerSchema.safeParse(values);
+    if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
+      setErrors((prev: RegisterErrors) => ({ ...prev, [field]: fieldErrors[field as keyof typeof fieldErrors]?.[0] }));
+    } else {
+      setErrors((prev: RegisterErrors) => ({ ...prev, [field]: undefined }));
+    }
+  }
+
+  function handleBlur(field: RegisterField, value: string) {
+    setTouched((prev: RegisterTouched) => ({ ...prev, [field]: true }));
+    validateField(field, value);
+  }
+
+  function handleChange(field: RegisterField, value: string) {
+    if (field === "username") setUsername(value);
+    else if (field === "email") setEmail(value);
+    else if (field === "password") setPassword(value);
+    else setConfirmPassword(value);
+    if (touched[field]) validateField(field, value);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setServerError("");
@@ -55,6 +89,7 @@ export default function RegisterPage() {
         password: fieldErrors.password?.[0],
         confirmPassword: fieldErrors.confirmPassword?.[0],
       });
+      setTouched({ username: true, email: true, password: true, confirmPassword: true });
       return;
     }
     setErrors({});
@@ -106,7 +141,8 @@ export default function RegisterPage() {
             <input
               type="text"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => handleChange("username", e.target.value)}
+              onBlur={(e) => handleBlur("username", e.target.value)}
               placeholder={r.username_placeholder}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="username"
@@ -123,7 +159,8 @@ export default function RegisterPage() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleChange("email", e.target.value)}
+              onBlur={(e) => handleBlur("email", e.target.value)}
               placeholder={r.email_placeholder}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="email"
@@ -140,7 +177,8 @@ export default function RegisterPage() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handleChange("password", e.target.value)}
+              onBlur={(e) => handleBlur("password", e.target.value)}
               placeholder={r.password_placeholder}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="new-password"
@@ -157,7 +195,8 @@ export default function RegisterPage() {
             <input
               type="password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => handleChange("confirmPassword", e.target.value)}
+              onBlur={(e) => handleBlur("confirmPassword", e.target.value)}
               placeholder={r.confirmPassword_placeholder}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="new-password"

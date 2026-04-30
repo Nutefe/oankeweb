@@ -19,6 +19,7 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState<{ username?: string; password?: string }>({});
+  const [touched, setTouched] = useState<{ username?: boolean; password?: boolean }>({});
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,6 +33,28 @@ export default function LoginPage() {
     [l]
   );
 
+  function validateField(field: "username" | "password", value: string) {
+    const values = { username, password, [field]: value };
+    const result = loginSchema.safeParse(values);
+    if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
+      setErrors((prev: { username?: string; password?: string }) => ({ ...prev, [field]: fieldErrors[field]?.[0] }));
+    } else {
+      setErrors((prev: { username?: string; password?: string }) => ({ ...prev, [field]: undefined }));
+    }
+  }
+
+  function handleBlur(field: "username" | "password", value: string) {
+    setTouched((prev: { username?: boolean; password?: boolean }) => ({ ...prev, [field]: true }));
+    validateField(field, value);
+  }
+
+  function handleChange(field: "username" | "password", value: string) {
+    if (field === "username") setUsername(value);
+    else setPassword(value);
+    if (touched[field]) validateField(field, value);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setServerError("");
@@ -43,6 +66,7 @@ export default function LoginPage() {
         username: fieldErrors.username?.[0],
         password: fieldErrors.password?.[0],
       });
+      setTouched({ username: true, password: true });
       return;
     }
     setErrors({});
@@ -98,7 +122,8 @@ export default function LoginPage() {
             <input
               type="text"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => handleChange("username", e.target.value)}
+              onBlur={(e) => handleBlur("username", e.target.value)}
               placeholder={l.username_placeholder}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="username"
@@ -115,7 +140,8 @@ export default function LoginPage() {
             <input
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handleChange("password", e.target.value)}
+              onBlur={(e) => handleBlur("password", e.target.value)}
               placeholder={l.password_placeholder}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition"
               autoComplete="current-password"

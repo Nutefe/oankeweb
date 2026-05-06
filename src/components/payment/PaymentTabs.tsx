@@ -9,6 +9,7 @@ import PayPalForm from "@/components/payment/PayPalForm";
 import AuthGateModal from "@/components/payment/AuthGateModal";
 import { CardFormValues, MobileMoneyFormValues, PayPalFormValues } from "@/schemas/paymentSchema";
 import { saveAbonnement } from "@/services/abonnementService";
+import { getUser } from "@/auth/authUtils";
 
 interface PaymentTabsProps {
   onSuccess: () => void;
@@ -43,10 +44,11 @@ export default function PaymentTabs({ onSuccess }: PaymentTabsProps) {
   ) {
     setIsSubmitting(true);
     try {
+      const token = user?.token ?? getUser()?.token;
       await saveAbonnement({
         categorieCommerce: draft.categorieCommerce,
         typeAbonnement: draft.offer?.id ?? 1,
-      });
+      }, token);
       console.info("Subscription validated:", { offer: draft.offer, ...payload });
       onSuccess();
     } finally {

@@ -19,6 +19,11 @@ export default function Navbar() {
 
   const activePath = pathname;
 
+  function handleMobileLogout() {
+    logout();
+    setMenuOpen(false);
+  }
+
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (
@@ -248,7 +253,7 @@ export default function Navbar() {
           ))}
           {user ? (
             <button
-              onClick={() => { setMenuOpen(false); logout(); }}
+              onClick={handleMobileLogout}
               className="text-sm font-medium py-2 text-gray-600 hover:text-[#1E3080] transition-colors text-left"
             >
               {t.nav.logout}

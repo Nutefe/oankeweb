@@ -1,11 +1,11 @@
 "use client";
 import { createContext, useCallback, useEffect, useState } from "react";
-import { StoredUser } from "@/types/auth";
+import { Users } from "@/types/auth";
 import { getUser, clearUser } from "@/auth/authUtils";
 
 interface AuthContextValue {
-  user: StoredUser | null;
-  setUser: (u: StoredUser | null) => void;
+  user: Users | null;
+  setUser: (u: Users | null) => void;
   logout: () => void;
   isLoading: boolean;
 }
@@ -18,7 +18,7 @@ export const AuthContext = createContext<AuthContextValue>({
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUserState] = useState<StoredUser | null>(null);
+  const [user, setUserState] = useState<Users | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(false);
   }, []);
 
-  const setUser = useCallback((u: StoredUser | null) => {
+  const setUser = useCallback((u: Users | null) => {
     setUserState(u);
   }, []);
 

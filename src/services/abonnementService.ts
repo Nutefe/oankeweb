@@ -5,10 +5,14 @@ export interface AbonnementPayload {
   typeAbonnement: number;
 }
 
-export async function saveAbonnement(payload: AbonnementPayload): Promise<void> {
+export async function saveAbonnement(payload: AbonnementPayload, token?: string): Promise<void> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
   const res = await fetch(`${API_GENERAL_BASE_URL}/general/abonnements`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify(payload),
   });
   if (!res.ok) {

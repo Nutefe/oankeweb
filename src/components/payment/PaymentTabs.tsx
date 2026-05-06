@@ -46,7 +46,7 @@ export default function PaymentTabs({ onSuccess }: PaymentTabsProps) {
       await saveAbonnement({
         categorieCommerce: draft.categorieCommerce,
         typeAbonnement: draft.offer?.id ?? 1,
-      });
+      }, user?.token);
       console.info("Subscription validated:", { offer: draft.offer, ...payload });
       onSuccess();
     } finally {

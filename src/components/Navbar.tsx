@@ -6,9 +6,11 @@ import { useState, useEffect, useRef } from "react";
 import { useLang } from "@/lib/LangContext";
 import LangToggle from "@/components/LangToggle";
 import { ROUTES } from "@/constants/routes";
+import { useUser } from "@/hooks/useUser";
 
 export default function Navbar() {
   const { t } = useLang();
+  const { user, logout } = useUser();
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
@@ -16,6 +18,11 @@ export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const activePath = pathname;
+
+  function handleMobileLogout() {
+    logout();
+    setMenuOpen(false);
+  }
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -34,7 +41,6 @@ export default function Navbar() {
     { href: ROUTES.SERVICES, label: t.nav.services },
     { href: ROUTES.SUPPORT, label: t.nav.support },
     { href: ROUTES.AIDE, label: t.nav.aide },
-    { href: ROUTES.LOGIN, label: t.nav.login },
   ];
 
   const solutionLinks = [
@@ -123,6 +129,25 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {user ? (
+              <button
+                onClick={logout}
+                className="text-sm font-medium text-gray-600 hover:text-[#1E3080] transition-colors"
+              >
+                {t.nav.logout}
+              </button>
+            ) : (
+              <Link
+                href={ROUTES.LOGIN}
+                className={`text-sm font-medium transition-colors ${
+                  activePath === ROUTES.LOGIN
+                    ? "text-[#1E3080] border-b-2 border-[#E8231A]"
+                    : "text-gray-600 hover:text-[#1E3080]"
+                }`}
+              >
+                {t.nav.login}
+              </Link>
+            )}
             <LangToggle />
           </div>
 
@@ -226,6 +251,26 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          {user ? (
+            <button
+              onClick={handleMobileLogout}
+              className="text-sm font-medium py-2 text-gray-600 hover:text-[#1E3080] transition-colors text-left"
+            >
+              {t.nav.logout}
+            </button>
+          ) : (
+            <Link
+              href={ROUTES.LOGIN}
+              onClick={() => setMenuOpen(false)}
+              className={`text-sm font-medium py-2 transition-colors ${
+                activePath === ROUTES.LOGIN
+                  ? "text-[#1E3080] font-bold"
+                  : "text-gray-600 hover:text-[#1E3080]"
+              }`}
+            >
+              {t.nav.login}
+            </Link>
+          )}
         </div>
       )}
     </nav>

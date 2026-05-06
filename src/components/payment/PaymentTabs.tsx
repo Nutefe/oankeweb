@@ -8,6 +8,7 @@ import MobileMoneyForm from "@/components/payment/MobileMoneyForm";
 import PayPalForm from "@/components/payment/PayPalForm";
 import AuthGateModal from "@/components/payment/AuthGateModal";
 import { CardFormValues, MobileMoneyFormValues, PayPalFormValues } from "@/schemas/paymentSchema";
+import { saveAbonnement } from "@/services/abonnementService";
 
 interface PaymentTabsProps {
   onSuccess: () => void;
@@ -42,8 +43,10 @@ export default function PaymentTabs({ onSuccess }: PaymentTabsProps) {
   ) {
     setIsSubmitting(true);
     try {
-      // Simulated API call
-      await new Promise<void>((resolve) => setTimeout(resolve, 1500));
+      await saveAbonnement({
+        categorieCommerce: draft.categorieCommerce,
+        typeAbonnement: draft.offer?.id ?? 1,
+      });
       console.info("Subscription validated:", { offer: draft.offer, ...payload });
       onSuccess();
     } finally {

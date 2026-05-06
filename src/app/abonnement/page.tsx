@@ -17,7 +17,7 @@ function SubscribeContent() {
   const s = t.subscribe;
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { draft, setOffer, resetDraft } = useSubscription();
+  const { draft, setOffer, setCategorieCommerce, resetDraft } = useSubscription();
   const [success, setSuccess] = useState(false);
   const [categorieCommerces, setCategorieCommerces] = useState<
     CategorieCommerces[]
@@ -121,6 +121,27 @@ function SubscribeContent() {
             <p className="text-[#1E3080] font-extrabold text-lg">
               {draft.offer.tarif}
             </p>
+          </div>
+        )}
+
+        {/* Categorie commerce select */}
+        {categorieCommerces.length > 0 && (
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              {s.categorie_label}
+            </label>
+            <select
+              value={draft.categorieCommerce}
+              onChange={(e) => setCategorieCommerce(e.target.value)}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition bg-white"
+            >
+              <option value="">{s.categorie_placeholder}</option>
+              {categorieCommerces.map((cat) => (
+                <option key={cat.id} value={String(cat.id)}>
+                  {cat.libelle}
+                </option>
+              ))}
+            </select>
           </div>
         )}
 

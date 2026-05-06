@@ -7,6 +7,7 @@ export type PaymentMethod = "card" | "mobile_money" | "paypal";
 
 export interface SubscriptionDraft {
   offer: TypeAbonnements | null;
+  categorieCommerce: string;
   paymentMethod: PaymentMethod;
   cardData: Partial<CardFormValues>;
   mobileMoneyData: Partial<MobileMoneyFormValues>;
@@ -16,6 +17,7 @@ export interface SubscriptionDraft {
 interface SubscriptionContextValue {
   draft: SubscriptionDraft;
   setOffer: (offer: TypeAbonnements) => void;
+  setCategorieCommerce: (categorieCommerce: string) => void;
   setPaymentMethod: (method: PaymentMethod) => void;
   setCardData: (data: Partial<CardFormValues>) => void;
   setMobileMoneyData: (data: Partial<MobileMoneyFormValues>) => void;
@@ -25,6 +27,7 @@ interface SubscriptionContextValue {
 
 const defaultDraft: SubscriptionDraft = {
   offer: null,
+  categorieCommerce: "",
   paymentMethod: "card",
   cardData: {},
   mobileMoneyData: {},
@@ -34,6 +37,7 @@ const defaultDraft: SubscriptionDraft = {
 const SubscriptionContext = createContext<SubscriptionContextValue>({
   draft: defaultDraft,
   setOffer: () => {},
+  setCategorieCommerce: () => {},
   setPaymentMethod: () => {},
   setCardData: () => {},
   setMobileMoneyData: () => {},
@@ -46,6 +50,10 @@ export function SubscriptionProvider({ children }: { children: React.ReactNode }
 
   const setOffer = useCallback((offer: TypeAbonnements) => {
     setDraft((prev) => ({ ...prev, offer }));
+  }, []);
+
+  const setCategorieCommerce = useCallback((categorieCommerce: string) => {
+    setDraft((prev) => ({ ...prev, categorieCommerce }));
   }, []);
 
   const setPaymentMethod = useCallback((paymentMethod: PaymentMethod) => {
@@ -70,7 +78,7 @@ export function SubscriptionProvider({ children }: { children: React.ReactNode }
 
   return (
     <SubscriptionContext.Provider
-      value={{ draft, setOffer, setPaymentMethod, setCardData, setMobileMoneyData, setPaypalData, resetDraft }}
+      value={{ draft, setOffer, setCategorieCommerce, setPaymentMethod, setCardData, setMobileMoneyData, setPaypalData, resetDraft }}
     >
       {children}
     </SubscriptionContext.Provider>

@@ -276,6 +276,8 @@
     },
     "submit": "Valider l'abonnement",
     "submitting": "Validation en cours…",
+    "categorie_label": "Catégorie de commerce",
+    "categorie_placeholder": "Sélectionnez une catégorie",
     "success_title": "Abonnement activé !",
     "success_desc": "Votre abonnement a été souscrit avec succès.",
     "go_dashboard": "Accéder à mon espace",

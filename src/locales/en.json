@@ -276,6 +276,8 @@
     },
     "submit": "Confirm subscription",
     "submitting": "Processing…",
+    "categorie_label": "Business category",
+    "categorie_placeholder": "Select a category",
     "success_title": "Subscription activated!",
     "success_desc": "Your subscription has been successfully created.",
     "go_dashboard": "Go to my workspace",

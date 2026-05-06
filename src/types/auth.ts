@@ -16,8 +16,9 @@ export interface StoredUser {
 }
 
 export interface Users{
-  id: number;
+  token: string;
   username: string;
   email: string;
-  roles: string[];
+  roles: string;
+  typeCommerce: string[];
 }

@@ -78,7 +78,6 @@ export default function AuthGateModal({ onSuccess, onClose }: AuthGateModalProps
         token: response.token,
         username: response.username,
         email: response.email,
-        roles: response.roles,
         typeCommerce: response.typeCommerce,
       };
       saveUser(storedUser);

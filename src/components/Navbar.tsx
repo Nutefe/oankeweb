@@ -10,15 +10,12 @@ import { ROUTES } from "@/constants/routes";
 export default function Navbar() {
   const { t } = useLang();
   const pathname = usePathname();
-  const [activePath, setActivePath] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setActivePath(pathname);
-  }, [pathname]);
+  const activePath = pathname;
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {

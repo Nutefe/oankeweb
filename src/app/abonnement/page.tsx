@@ -6,6 +6,11 @@ import PaymentTabs from "@/components/payment/PaymentTabs";
 import { useSubscription } from "@/lib/SubscriptionContext";
 import { useLang } from "@/lib/LangContext";
 import { ROUTES } from "@/constants/routes";
+import { getOneTypeAbonnements } from "@/services/typeAbonnementService";
+import { CategorieCommerces } from "@/types/categorie-commerce";
+import {
+  getCategorieCommerceByType,
+} from "@/services/categorieCommerceService";
 
 function SubscribeContent() {
   const { t } = useLang();
@@ -14,18 +19,47 @@ function SubscribeContent() {
   const searchParams = useSearchParams();
   const { draft, setOffer, resetDraft } = useSubscription();
   const [success, setSuccess] = useState(false);
+  const [categorieCommerces, setCategorieCommerces] = useState<
+    CategorieCommerces[]
+  >([]);
 
   // Hydrate offer from URL query params once on first render
   const hydratedRef = useRef(false);
+
+  // Fetch plans from API
   useEffect(() => {
     if (hydratedRef.current) return;
     hydratedRef.current = true;
-    const name = searchParams.get("name");
-    const price = searchParams.get("price");
-    const planKey = searchParams.get("planKey");
-    if (name && price && planKey && !draft.offer) {
-      setOffer({ name, price, planKey });
+    async function fetchPlans() {
+      try {
+        const id = searchParams.get("key");
+        if (id) {
+          const data = await getOneTypeAbonnements(Number(id));
+          setOffer(data);
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des types d'abonnement :",
+          error,
+        );
+      }
     }
+    async function fetchCategorieCommerce() {
+      try {
+        const id = searchParams.get("typecommerce");
+        if (id) {
+          const data = await getCategorieCommerceByType(Number(id));
+          setCategorieCommerces(data);
+        }
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des catégories de commerce :",
+          error,
+        );
+      }
+    }
+    fetchPlans();
+    fetchCategorieCommerce();
   }, [searchParams, draft.offer, setOffer]);
 
   function handleSuccess() {
@@ -39,12 +73,24 @@ function SubscribeContent() {
         <div className="bg-white rounded-2xl shadow-md p-10 max-w-md w-full text-center">
           <div className="flex justify-center mb-6">
             <span className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
-              <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <svg
+                className="w-8 h-8 text-green-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
             </span>
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">{s.success_title}</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+            {s.success_title}
+          </h2>
           <p className="text-gray-500 mb-8">{s.success_desc}</p>
           <button
             onClick={() => router.push(ROUTES.LOGIN)}
@@ -70,9 +116,11 @@ function SubscribeContent() {
               <p className="text-xs text-[#1E3080] font-semibold uppercase tracking-wider mb-1">
                 {s.offer_label}
               </p>
-              <p className="text-gray-900 font-bold">{draft.offer.name}</p>
+              <p className="text-gray-900 font-bold">{draft.offer.libelle}</p>
             </div>
-            <p className="text-[#1E3080] font-extrabold text-lg">{draft.offer.price}</p>
+            <p className="text-[#1E3080] font-extrabold text-lg">
+              {draft.offer.tarif}
+            </p>
           </div>
         )}
 
@@ -99,7 +147,8 @@ export default function SubscribePage() {
         <SubscribeContent />
       </Suspense>
       <footer className="bg-gray-900 text-gray-400 text-center py-6 text-sm">
-        &copy; <span suppressHydrationWarning>{new Date().getFullYear()}</span> Oanke. Tous droits réservés.
+        &copy; <span suppressHydrationWarning>{new Date().getFullYear()}</span>{" "}
+        Oanke. Tous droits réservés.
       </footer>
     </div>
   );

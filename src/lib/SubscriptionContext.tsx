@@ -1,17 +1,12 @@
 "use client";
 import { createContext, useCallback, useContext, useState } from "react";
 import { CardFormValues, MobileMoneyFormValues, PayPalFormValues } from "@/schemas/paymentSchema";
+import { TypeAbonnements } from "@/types/type-abonnement";
 
 export type PaymentMethod = "card" | "mobile_money" | "paypal";
 
-export interface OfferDraft {
-  name: string;
-  price: string;
-  planKey: string;
-}
-
 export interface SubscriptionDraft {
-  offer: OfferDraft | null;
+  offer: TypeAbonnements | null;
   paymentMethod: PaymentMethod;
   cardData: Partial<CardFormValues>;
   mobileMoneyData: Partial<MobileMoneyFormValues>;
@@ -20,7 +15,7 @@ export interface SubscriptionDraft {
 
 interface SubscriptionContextValue {
   draft: SubscriptionDraft;
-  setOffer: (offer: OfferDraft) => void;
+  setOffer: (offer: TypeAbonnements) => void;
   setPaymentMethod: (method: PaymentMethod) => void;
   setCardData: (data: Partial<CardFormValues>) => void;
   setMobileMoneyData: (data: Partial<MobileMoneyFormValues>) => void;
@@ -49,7 +44,7 @@ const SubscriptionContext = createContext<SubscriptionContextValue>({
 export function SubscriptionProvider({ children }: { children: React.ReactNode }) {
   const [draft, setDraft] = useState<SubscriptionDraft>(defaultDraft);
 
-  const setOffer = useCallback((offer: OfferDraft) => {
+  const setOffer = useCallback((offer: TypeAbonnements) => {
     setDraft((prev) => ({ ...prev, offer }));
   }, []);
 

@@ -25,7 +25,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<Lang>("fr");
 
   useEffect(() => {
-    const stored = localStorage.getItem("oanke_lang") as Lang | null;
+    const stored = window.localStorage.getItem("oanke_lang") as Lang | null;
     if (stored === "fr" || stored === "en") {
       setLang(stored);
     }
@@ -34,7 +34,7 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const toggleLang = useCallback(() => {
     setLang((prev) => {
       const next = prev === "fr" ? "en" : "fr";
-      localStorage.setItem("oanke_lang", next);
+      window.localStorage.setItem("oanke_lang", next);
       return next;
     });
   }, []);

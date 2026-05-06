@@ -10,7 +10,7 @@ export const ROUTES = {
     COMMERCE: "/solutions/commerce",
     ENTREPRISE: "/solutions/entreprise",
   },
-  SUBSCRIBE: "/subscribe",
+  ABONNEMENT: "/abonnement",
   DASHBOARD: {
     VENTE: "/dashboard/vente",
     RESTAURANT: "/dashboard/restaurant",

@@ -1,5 +1,5 @@
 export interface Boutique {
-  id?: number;
+  id: number;
   categorieCommerce?: number;
   nom: string;
   adresse?: string;

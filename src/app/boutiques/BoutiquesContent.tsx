@@ -99,13 +99,7 @@ export default function BoutiquesContent({
     if (!initialDashboard) return;
 
     const dashboardRoute = getDashboardRoute(initialDashboard);
-    const boutiqueId = boutique.id;
-
-    router.push(
-      typeof boutiqueId === "number"
-        ? `${dashboardRoute}?boutique=${boutiqueId}`
-        : dashboardRoute,
-    );
+    router.push(`${dashboardRoute}?boutique=${boutique.id}`);
   }
 
   if (!initialCategorieCommerce || !initialDashboard) {
@@ -153,7 +147,7 @@ export default function BoutiquesContent({
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {boutiques.map((boutique) => (
               <button
-                key={boutique.id ?? `${boutique.nom}-${boutique.adresse ?? ""}-${boutique.telephone ?? ""}`}
+                key={boutique.id}
                 type="button"
                 onClick={() => openBoutique(boutique)}
                 className="flex flex-col items-start gap-4 rounded-2xl border-2 border-gray-100 bg-white p-6 text-left shadow transition-all hover:border-blue-700 hover:shadow-md"

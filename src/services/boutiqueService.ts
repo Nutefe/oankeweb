@@ -10,9 +10,9 @@ export async function getBoutiques(
     searchParams.set("categorieCommerce", String(categorieCommerce));
   }
 
-  const url = searchParams.size
-    ? `${API_GENERAL_BASE_URL}/vente/boutiques?${searchParams.toString()}`
-    : `${API_GENERAL_BASE_URL}/vente/boutiques`;
+  const url = `${API_GENERAL_BASE_URL}/vente/boutiques${
+    searchParams.size ? `?${searchParams.toString()}` : ""
+  }`;
 
   const res = await fetch(url, {
     method: "GET",

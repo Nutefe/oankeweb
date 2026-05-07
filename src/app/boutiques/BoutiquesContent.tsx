@@ -30,7 +30,9 @@ export default function BoutiquesContent({
   const choose = t.choose;
 
   const [boutiques, setBoutiques] = useState<Boutique[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(
+    () => Boolean(initialCategorieCommerce && initialDashboard),
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState(INITIAL_FORM);
@@ -65,10 +67,7 @@ export default function BoutiquesContent({
   }, [choose.boutiques_error, initialCategorieCommerce, token]);
 
   useEffect(() => {
-    if (!initialCategorieCommerce || !initialDashboard) {
-      setIsLoading(false);
-      return;
-    }
+    if (!initialCategorieCommerce || !initialDashboard) return;
 
     void loadBoutiques();
   }, [initialCategorieCommerce, initialDashboard, loadBoutiques]);

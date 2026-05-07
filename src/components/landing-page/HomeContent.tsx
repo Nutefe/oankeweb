@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import SubscriptionCard from "@/components/SubscriptionCard";
+import SubscriptionCard from "@/components/landing-page/SubscriptionCard";
 import { useLang } from "@/lib/LangContext";
 import { ROUTES } from "@/constants/routes";
 

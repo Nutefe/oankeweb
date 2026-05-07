@@ -9,6 +9,7 @@ import { login } from "@/services/authService";
 import { saveUser } from "@/auth/authUtils";
 import { createLoginSchema } from "@/schemas/loginSchema";
 import { ROUTES } from "@/constants/routes";
+import { getUserTypeCommerces } from "@/services/typeCommerceService";
 
 export default function LoginPage() {
   const { t } = useLang();
@@ -18,8 +19,14 @@ export default function LoginPage() {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState<{ username?: string; password?: string }>({});
-  const [touched, setTouched] = useState<{ username?: boolean; password?: boolean }>({});
+  const [errors, setErrors] = useState<{
+    username?: string;
+    password?: string;
+  }>({});
+  const [touched, setTouched] = useState<{
+    username?: boolean;
+    password?: boolean;
+  }>({});
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -30,7 +37,7 @@ export default function LoginPage() {
         password_required: l.validation.password_required,
         password_min: l.validation.password_min,
       }),
-    [l]
+    [l],
   );
 
   function validateField(field: "username" | "password", value: string) {
@@ -38,14 +45,23 @@ export default function LoginPage() {
     const result = loginSchema.safeParse(values);
     if (!result.success) {
       const fieldErrors = result.error.flatten().fieldErrors;
-      setErrors((prev: { username?: string; password?: string }) => ({ ...prev, [field]: fieldErrors[field]?.[0] }));
+      setErrors((prev: { username?: string; password?: string }) => ({
+        ...prev,
+        [field]: fieldErrors[field]?.[0],
+      }));
     } else {
-      setErrors((prev: { username?: string; password?: string }) => ({ ...prev, [field]: undefined }));
+      setErrors((prev: { username?: string; password?: string }) => ({
+        ...prev,
+        [field]: undefined,
+      }));
     }
   }
 
   function handleBlur(field: "username" | "password", value: string) {
-    setTouched((prev: { username?: boolean; password?: boolean }) => ({ ...prev, [field]: true }));
+    setTouched((prev: { username?: boolean; password?: boolean }) => ({
+      ...prev,
+      [field]: true,
+    }));
     validateField(field, value);
   }
 
@@ -84,8 +100,10 @@ export default function LoginPage() {
       saveUser(storedUser);
       setUser(storedUser);
 
-      if (response.typeCommerce.length === 1) {
-        router.push(`/dashboard/${response.typeCommerce[0]}`);
+      const typeCommerce = await getUserTypeCommerces(response.token);
+
+      if (typeCommerce.length === 1) {
+        router.push(`/dashboard/${typeCommerce[0].dashboard}`);
       } else {
         router.push(ROUTES.CHOOSE_COMMERCE);
       }
@@ -97,12 +115,23 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4"
-      style={{ background: "linear-gradient(135deg, var(--oanke-navy) 0%, var(--oanke-red) 100%)" }}>
+    <div
+      className="min-h-screen flex items-center justify-center px-4"
+      style={{
+        background:
+          "linear-gradient(135deg, var(--oanke-navy) 0%, var(--oanke-red) 100%)",
+      }}
+    >
       <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
         {/* Logo */}
         <div className="flex flex-col items-center mb-8">
-          <Image src="/logo.png" alt="Oanke" width={140} height={50} className="h-12 w-auto mb-2" />
+          <Image
+            src="/logo.png"
+            alt="Oanke"
+            width={140}
+            height={50}
+            className="h-12 w-auto mb-2"
+          />
           <p className="text-gray-500 mt-2 text-sm">{l.subtitle}</p>
         </div>
 
@@ -114,7 +143,11 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-5"
+          noValidate
+        >
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               {l.username_label}
@@ -162,7 +195,10 @@ export default function LoginPage() {
 
         <p className="text-center text-sm text-gray-500 mt-6">
           {l.no_account}{" "}
-          <Link href={ROUTES.REGISTER} className="text-[#1E3080] font-semibold hover:underline">
+          <Link
+            href={ROUTES.REGISTER}
+            className="text-[#1E3080] font-semibold hover:underline"
+          >
             {l.register_link}
           </Link>
         </p>

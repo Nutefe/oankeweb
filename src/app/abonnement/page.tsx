@@ -132,12 +132,12 @@ function SubscribeContent() {
             </label>
             <select
               value={draft.categorieCommerce}
-              onChange={(e) => setCategorieCommerce(e.target.value)}
+              onChange={(e) => setCategorieCommerce(Number(e.target.value))}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#1E3080] focus:border-transparent transition bg-white"
             >
               <option value="">{s.categorie_placeholder}</option>
               {categorieCommerces.map((cat) => (
-                <option key={cat.id} value={String(cat.id)}>
+                <option key={cat.id} value={cat.id}>
                   {cat.libelle}
                 </option>
               ))}

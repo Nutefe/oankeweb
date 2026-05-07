@@ -2,12 +2,13 @@
 import { createContext, useCallback, useContext, useState } from "react";
 import { CardFormValues, MobileMoneyFormValues, PayPalFormValues } from "@/schemas/paymentSchema";
 import { TypeAbonnements } from "@/types/type-abonnement";
+import { number } from "zod";
 
 export type PaymentMethod = "card" | "mobile_money" | "paypal";
 
 export interface SubscriptionDraft {
   offer: TypeAbonnements | null;
-  categorieCommerce: string;
+  categorieCommerce: number;
   paymentMethod: PaymentMethod;
   cardData: Partial<CardFormValues>;
   mobileMoneyData: Partial<MobileMoneyFormValues>;
@@ -17,7 +18,7 @@ export interface SubscriptionDraft {
 interface SubscriptionContextValue {
   draft: SubscriptionDraft;
   setOffer: (offer: TypeAbonnements) => void;
-  setCategorieCommerce: (categorieCommerce: string) => void;
+  setCategorieCommerce: (categorieCommerce: number) => void;
   setPaymentMethod: (method: PaymentMethod) => void;
   setCardData: (data: Partial<CardFormValues>) => void;
   setMobileMoneyData: (data: Partial<MobileMoneyFormValues>) => void;
@@ -27,7 +28,7 @@ interface SubscriptionContextValue {
 
 const defaultDraft: SubscriptionDraft = {
   offer: null,
-  categorieCommerce: "",
+  categorieCommerce: 0,
   paymentMethod: "card",
   cardData: {},
   mobileMoneyData: {},
@@ -52,7 +53,7 @@ export function SubscriptionProvider({ children }: { children: React.ReactNode }
     setDraft((prev) => ({ ...prev, offer }));
   }, []);
 
-  const setCategorieCommerce = useCallback((categorieCommerce: string) => {
+  const setCategorieCommerce = useCallback((categorieCommerce: number) => {
     setDraft((prev) => ({ ...prev, categorieCommerce }));
   }, []);
 

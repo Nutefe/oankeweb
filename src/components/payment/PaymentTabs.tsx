@@ -7,7 +7,11 @@ import CardForm from "@/components/payment/CardForm";
 import MobileMoneyForm from "@/components/payment/MobileMoneyForm";
 import PayPalForm from "@/components/payment/PayPalForm";
 import AuthGateModal from "@/components/payment/AuthGateModal";
-import { CardFormValues, MobileMoneyFormValues, PayPalFormValues } from "@/schemas/paymentSchema";
+import {
+  CardFormValues,
+  MobileMoneyFormValues,
+  PayPalFormValues,
+} from "@/schemas/paymentSchema";
 import { saveAbonnement } from "@/services/abonnementService";
 import { getUser } from "@/auth/authUtils";
 
@@ -15,7 +19,10 @@ interface PaymentTabsProps {
   onSuccess: () => void;
 }
 
-const TABS: { key: PaymentMethod; labelKey: "tab_card" | "tab_mobile_money" | "tab_paypal" }[] = [
+const TABS: {
+  key: PaymentMethod;
+  labelKey: "tab_card" | "tab_mobile_money" | "tab_paypal";
+}[] = [
   { key: "card", labelKey: "tab_card" },
   { key: "mobile_money", labelKey: "tab_mobile_money" },
   { key: "paypal", labelKey: "tab_paypal" },
@@ -40,16 +47,23 @@ export default function PaymentTabs({ onSuccess }: PaymentTabsProps) {
     payload:
       | { method: "card"; data: CardFormValues }
       | { method: "mobile_money"; data: MobileMoneyFormValues }
-      | { method: "paypal"; data: PayPalFormValues }
+      | { method: "paypal"; data: PayPalFormValues },
   ) {
     setIsSubmitting(true);
     try {
       const token = user?.token ?? getUser()?.token;
-      await saveAbonnement({
-        categorieCommerce: draft.categorieCommerce,
-        typeAbonnement: draft.offer?.id ?? 1,
-      }, token);
-      console.info("Subscription validated:", { offer: draft.offer, ...payload });
+
+      await saveAbonnement(
+        {
+          categorieCommerce: draft.categorieCommerce,
+          typeAbonnement: draft.offer?.id ?? 1,
+        },
+        token,
+      );
+      console.info("Subscription validated:", {
+        offer: draft.offer,
+        ...payload,
+      });
       onSuccess();
     } finally {
       setIsSubmitting(false);
@@ -60,7 +74,7 @@ export default function PaymentTabs({ onSuccess }: PaymentTabsProps) {
     payload:
       | { method: "card"; data: CardFormValues }
       | { method: "mobile_money"; data: MobileMoneyFormValues }
-      | { method: "paypal"; data: PayPalFormValues }
+      | { method: "paypal"; data: PayPalFormValues },
   ) {
     if (!user) {
       setPendingSubmit(payload);
@@ -106,7 +120,9 @@ export default function PaymentTabs({ onSuccess }: PaymentTabsProps) {
       )}
       {draft.paymentMethod === "mobile_money" && (
         <MobileMoneyForm
-          onSubmit={(data) => handleFormSubmit({ method: "mobile_money", data })}
+          onSubmit={(data) =>
+            handleFormSubmit({ method: "mobile_money", data })
+          }
           isSubmitting={isSubmitting}
         />
       )}

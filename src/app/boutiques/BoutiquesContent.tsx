@@ -57,7 +57,11 @@ export default function BoutiquesContent({
       setBoutiques(data);
       setError("");
     } catch (err) {
-      setError(err instanceof Error ? err.message : choose.boutiques_error);
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : choose.boutiques_error,
+      );
     } finally {
       setIsLoading(false);
     }
@@ -88,7 +92,9 @@ export default function BoutiquesContent({
       await refreshBoutiques();
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : choose.boutiques_create_error,
+        err instanceof Error && err.message
+          ? err.message
+          : choose.boutiques_create_error,
       );
     } finally {
       setIsSubmitting(false);

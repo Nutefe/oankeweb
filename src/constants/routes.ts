@@ -1,3 +1,7 @@
+export const DASHBOARD_SLUGS = ["vente", "restaurant", "service"] as const;
+
+export type DashboardSlug = (typeof DASHBOARD_SLUGS)[number];
+
 export const ROUTES = {
   HOME: "/",
   SERVICES: "/services",
@@ -6,6 +10,7 @@ export const ROUTES = {
   LOGIN: "/login",
   REGISTER: "/register",
   CHOOSE_COMMERCE: "/choose-commerce",
+  BOUTIQUES: "/boutiques",
   SOLUTIONS: {
     COMMERCE: "/solutions/commerce",
     ENTREPRISE: "/solutions/entreprise",
@@ -17,3 +22,25 @@ export const ROUTES = {
     SERVICE: "/dashboard/service",
   },
 } as const;
+
+export function isDashboardSlug(value: string): value is DashboardSlug {
+  return DASHBOARD_SLUGS.includes(value as DashboardSlug);
+}
+
+export function getDashboardRoute(dashboard: string): string {
+  if (dashboard === "restaurant") return ROUTES.DASHBOARD.RESTAURANT;
+  if (dashboard === "service") return ROUTES.DASHBOARD.SERVICE;
+  return ROUTES.DASHBOARD.VENTE;
+}
+
+export function getBoutiquesRoute(
+  categorieCommerce: number,
+  dashboard: string,
+): string {
+  const params = new URLSearchParams({
+    categorieCommerce: String(categorieCommerce),
+    dashboard: isDashboardSlug(dashboard) ? dashboard : "vente",
+  });
+
+  return `${ROUTES.BOUTIQUES}?${params.toString()}`;
+}

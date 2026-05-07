@@ -62,7 +62,7 @@ export default function BoutiquesContent({
     } catch (err) {
       setError(
         err instanceof Error &&
-          err.message &&
+          err.message !== "" &&
           err.message !== DEFAULT_BOUTIQUE_REQUEST_ERROR
           ? err.message
           : choose.boutiques_error,
@@ -98,7 +98,7 @@ export default function BoutiquesContent({
     } catch (err) {
       setError(
         err instanceof Error &&
-          err.message &&
+          err.message !== "" &&
           err.message !== DEFAULT_BOUTIQUE_REQUEST_ERROR
           ? err.message
           : choose.boutiques_create_error,

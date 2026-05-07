@@ -27,11 +27,6 @@ export function isDashboardSlug(value: string): value is DashboardSlug {
   return DASHBOARD_SLUGS.includes(value as DashboardSlug);
 }
 
-export function normalizeDashboardSlug(value: string): DashboardSlug {
-  if (value === "restaurant") return "restaurant";
-  if (value === "service") return "service";
-  return "vente";
-}
 
 export function getDashboardRoute(dashboard: DashboardSlug): string {
   if (dashboard === "restaurant") return ROUTES.DASHBOARD.RESTAURANT;

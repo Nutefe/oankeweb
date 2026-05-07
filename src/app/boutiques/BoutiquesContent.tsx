@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getUser } from "@/auth/authUtils";
 import { ROUTES, DashboardSlug, getDashboardRoute } from "@/constants/routes";
@@ -12,6 +12,8 @@ import { Boutique } from "@/types/boutique";
 interface BoutiquesContentProps {
   initialCategorieCommerce: number | null;
   initialDashboard: DashboardSlug | null;
+  initialBoutiques: Boutique[];
+  initialError: string;
 }
 
 const INITIAL_FORM = {
@@ -23,18 +25,18 @@ const INITIAL_FORM = {
 export default function BoutiquesContent({
   initialCategorieCommerce,
   initialDashboard,
+  initialBoutiques,
+  initialError,
 }: BoutiquesContentProps) {
   const { t } = useLang();
   const { user } = useUser();
   const router = useRouter();
   const choose = t.choose;
 
-  const [boutiques, setBoutiques] = useState<Boutique[]>([]);
-  const [isLoading, setIsLoading] = useState(
-    () => Boolean(initialCategorieCommerce && initialDashboard),
-  );
+  const [boutiques, setBoutiques] = useState<Boutique[]>(initialBoutiques);
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(initialError);
   const [formData, setFormData] = useState(INITIAL_FORM);
 
   const token = user?.token ?? getUser()?.token;
@@ -45,32 +47,21 @@ export default function BoutiquesContent({
     return choose.vente;
   }, [choose.restaurant, choose.service, choose.vente, initialDashboard]);
 
-  const loadBoutiques = useCallback(async () => {
-    if (!token || !initialCategorieCommerce) {
-      setIsLoading(false);
-      return;
-    }
+  async function refreshBoutiques() {
+    if (!token || !initialCategorieCommerce) return;
 
     setIsLoading(true);
-    setError("");
 
     try {
       const data = await getBoutiques(token, initialCategorieCommerce);
       setBoutiques(data);
+      setError("");
     } catch (err) {
-      setError(
-        err instanceof Error ? err.message : choose.boutiques_error,
-      );
+      setError(err instanceof Error ? err.message : choose.boutiques_error);
     } finally {
       setIsLoading(false);
     }
-  }, [choose.boutiques_error, initialCategorieCommerce, token]);
-
-  useEffect(() => {
-    if (!initialCategorieCommerce || !initialDashboard) return;
-
-    void loadBoutiques();
-  }, [initialCategorieCommerce, initialDashboard, loadBoutiques]);
+  }
 
   async function handleCreateBoutique(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -94,7 +85,7 @@ export default function BoutiquesContent({
         token,
       );
       setFormData(INITIAL_FORM);
-      await loadBoutiques();
+      await refreshBoutiques();
     } catch (err) {
       setError(
         err instanceof Error ? err.message : choose.boutiques_create_error,

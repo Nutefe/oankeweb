@@ -8,7 +8,7 @@ import { TypeCommerces } from "@/types/type-commerce";
 import { getUserTypeCommerces } from "@/services/typeCommerceService";
 import { IconTypeCommerce } from "@/components/type-commerce/IconeTypeCommerce";
 import { getUser } from "@/auth/authUtils";
-import { getBoutiquesRoute } from "@/constants/routes";
+import { getBoutiquesRoute, normalizeDashboardSlug } from "@/constants/routes";
 
 function ChooseCommerceContent() {
   const { t } = useLang();
@@ -48,7 +48,7 @@ function ChooseCommerceContent() {
       router.replace(
         getBoutiquesRoute(
           userTypeCommerce[0].id,
-          userTypeCommerce[0].dashboard,
+          normalizeDashboardSlug(userTypeCommerce[0].dashboard),
         ),
       );
     }
@@ -66,7 +66,11 @@ function ChooseCommerceContent() {
         {userTypeCommerce.map((type) => (
           <button
             key={type.id}
-            onClick={() => router.push(getBoutiquesRoute(type.id, type.dashboard))}
+            onClick={() =>
+              router.push(
+                getBoutiquesRoute(type.id, normalizeDashboardSlug(type.dashboard)),
+              )
+            }
             className="flex flex-col items-center gap-4 bg-white rounded-2xl shadow p-8 border-2 border-gray-100 hover:border-blue-700 hover:shadow-md transition-all group"
           >
             {IconTypeCommerce[type.dashboard]}

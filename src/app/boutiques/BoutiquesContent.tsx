@@ -2,11 +2,14 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getUser } from "@/auth/authUtils";
 import { ROUTES, DashboardSlug, getDashboardRoute } from "@/constants/routes";
 import { useUser } from "@/hooks/useUser";
 import { useLang } from "@/lib/LangContext";
-import { createBoutique, getBoutiques } from "@/services/boutiqueService";
+import {
+  DEFAULT_BOUTIQUE_REQUEST_ERROR,
+  createBoutique,
+  getBoutiques,
+} from "@/services/boutiqueService";
 import { Boutique } from "@/types/boutique";
 
 interface BoutiquesContentProps {
@@ -39,7 +42,7 @@ export default function BoutiquesContent({
   const [error, setError] = useState(initialError);
   const [formData, setFormData] = useState(INITIAL_FORM);
 
-  const token = user?.token ?? getUser()?.token;
+  const token = user?.token;
 
   const commerceLabel = useMemo(() => {
     if (initialDashboard === "restaurant") return choose.restaurant;
@@ -58,7 +61,9 @@ export default function BoutiquesContent({
       setError("");
     } catch (err) {
       setError(
-        err instanceof Error && err.message
+        err instanceof Error &&
+          err.message &&
+          err.message !== DEFAULT_BOUTIQUE_REQUEST_ERROR
           ? err.message
           : choose.boutiques_error,
       );
@@ -92,7 +97,9 @@ export default function BoutiquesContent({
       await refreshBoutiques();
     } catch (err) {
       setError(
-        err instanceof Error && err.message
+        err instanceof Error &&
+          err.message &&
+          err.message !== DEFAULT_BOUTIQUE_REQUEST_ERROR
           ? err.message
           : choose.boutiques_create_error,
       );

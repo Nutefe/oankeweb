@@ -1,8 +1,10 @@
 import { API_GENERAL_BASE_URL } from "@/config/api";
 import { Boutique, CreateBoutiquePayload } from "@/types/boutique";
 
+export const DEFAULT_BOUTIQUE_REQUEST_ERROR = "BOUTIQUE_REQUEST_FAILED";
+
 function createRequestError(message?: string): Error {
-  return new Error(message ?? "");
+  return new Error(message ?? DEFAULT_BOUTIQUE_REQUEST_ERROR);
 }
 
 export async function getBoutiques(

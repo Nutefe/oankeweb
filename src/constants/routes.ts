@@ -27,7 +27,13 @@ export function isDashboardSlug(value: string): value is DashboardSlug {
   return DASHBOARD_SLUGS.includes(value as DashboardSlug);
 }
 
-export function getDashboardRoute(dashboard: string): string {
+export function normalizeDashboardSlug(value: string): DashboardSlug {
+  if (value === "restaurant") return "restaurant";
+  if (value === "service") return "service";
+  return "vente";
+}
+
+export function getDashboardRoute(dashboard: DashboardSlug): string {
   if (dashboard === "restaurant") return ROUTES.DASHBOARD.RESTAURANT;
   if (dashboard === "service") return ROUTES.DASHBOARD.SERVICE;
   return ROUTES.DASHBOARD.VENTE;
@@ -35,11 +41,11 @@ export function getDashboardRoute(dashboard: string): string {
 
 export function getBoutiquesRoute(
   categorieCommerce: number,
-  dashboard: string,
+  dashboard: DashboardSlug,
 ): string {
   const params = new URLSearchParams({
     categorieCommerce: String(categorieCommerce),
-    dashboard: isDashboardSlug(dashboard) ? dashboard : "vente",
+    dashboard,
   });
 
   return `${ROUTES.BOUTIQUES}?${params.toString()}`;

@@ -2,7 +2,10 @@ import { cookies } from "next/headers";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import BoutiquesContent from "@/app/boutiques/BoutiquesContent";
 import { DashboardSlug, isDashboardSlug } from "@/constants/routes";
-import { getBoutiques } from "@/services/boutiqueService";
+import {
+  DEFAULT_BOUTIQUE_REQUEST_ERROR,
+  getBoutiques,
+} from "@/services/boutiqueService";
 import { Boutique } from "@/types/boutique";
 
 interface BoutiquesPageProps {
@@ -40,9 +43,10 @@ export default async function BoutiquesPage({
       initialBoutiques = await getBoutiques(token, initialCategorieCommerce);
     } catch (error) {
       initialError =
-        error instanceof Error
+        error instanceof Error &&
+        error.message !== DEFAULT_BOUTIQUE_REQUEST_ERROR
           ? error.message
-          : "Impossible de charger les boutiques.";
+          : "";
     }
   }
 

@@ -8,7 +8,7 @@ import { useUser } from "@/hooks/useUser";
 import { login } from "@/services/authService";
 import { saveUser } from "@/auth/authUtils";
 import { createLoginSchema } from "@/schemas/loginSchema";
-import { ROUTES, getBoutiquesRoute } from "@/constants/routes";
+import { ROUTES, getBoutiquesRoute, normalizeDashboardSlug } from "@/constants/routes";
 import { getUserTypeCommerces } from "@/services/typeCommerceService";
 
 export default function LoginPage() {
@@ -104,7 +104,10 @@ export default function LoginPage() {
 
       if (typeCommerce.length === 1) {
         router.push(
-          getBoutiquesRoute(typeCommerce[0].id, typeCommerce[0].dashboard),
+          getBoutiquesRoute(
+            typeCommerce[0].id,
+            normalizeDashboardSlug(typeCommerce[0].dashboard),
+          ),
         );
       } else {
         router.push(ROUTES.CHOOSE_COMMERCE);
